@@ -1,0 +1,37 @@
+{
+  "subtotal": 55,
+  "iva": 6.6,
+  "descuento": 0,
+  "total": 61.6,
+  "_id": "60ee21d71f0cf25715227d3c",
+  "codigo": "19",
+  "fecha": "2021-07-13T23:28:21.036Z",
+  "cliente": {
+      "estado": true,
+      "_id": "60e4f2eef19b570939756836",
+      "identificacion": "1314151617",
+      "nombre": "John C",
+      "usuario": "60c1560ee2a40407a9c43be7",
+      "__v": 0
+  },
+  "productos": [
+      {
+          "_id": "60ee21d71f0cf25715227d3d",
+          "item": {
+              "estado": true,
+              "precio": 11,
+              "_id": "60d68b28a32b7e0d80920859",
+              "nombre": "computadora macbook pro con un mouse optico y memoria flash gratis para que lleve 2",
+              "categoria": "60c14361a1693a073dc96043",
+              "usuario": "60c1560ee2a40407a9c43be7",
+              "__v": 0
+          },
+          "cantidad": 5,
+          "precio": 11
+      }
+  ],
+  "usuario": {
+      "_id": "60c1560ee2a40407a9c43be7",
+      "nombre": "John"
+  }
+}

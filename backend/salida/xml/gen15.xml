@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura id="comprobante" version="1.1.0">
+    <infoTributaria>
+        <ambiente>1</ambiente>
+        <tipoEmision>1</tipoEmision>
+        <razonSocial>JOHN ANTONIO CEVALLOS MACIAS</razonSocial>
+        <nombreComercial>JOHN ANONIO CEVALLOS MACIAS</nombreComercial>
+        <ruc>1310024359001</ruc>
+        <claveAcceso>2810202101131002435900110010010000010012810001311</claveAcceso>
+        <codDoc>01</codDoc>
+        <estab>001</estab>
+        <ptoEmi>001</ptoEmi>
+        <secuencial>000001001</secuencial>
+        <dirMatriz>Carapungo Av. Luis Vacarri B9 S29 y Carihuairazo</dirMatriz>
+        <agenteRetencion>00000001</agenteRetencion>
+    </infoTributaria>
+    <infoFactura>
+        <fechaEmision>28/10/2021</fechaEmision>
+        <dirEstablecimiento>Carapungo B9-S29</dirEstablecimiento>
+        <obligadoContabilidad>SI</obligadoContabilidad>
+        <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
+        <razonSocialComprador>PRUEBAS SERVICIO DE RENTAS INTERNAS</razonSocialComprador>
+        <identificacionComprador>1713328506001</identificacionComprador>
+        <totalSinImpuestos>23.00</totalSinImpuestos>
+        <totalDescuento>0.00</totalDescuento>
+        <totalConImpuestos>
+            <totalImpuesto>
+                <codigo>2</codigo>
+                <codigoPorcentaje>0</codigoPorcentaje>
+                <baseImponible>0.00</baseImponible>
+                <valor>0.00</valor>
+            </totalImpuesto>
+            <totalImpuesto>
+                <codigo>2</codigo>
+                <codigoPorcentaje>2</codigoPorcentaje>
+                <baseImponible>25.76</baseImponible>
+                <valor>2.76</valor>
+            </totalImpuesto>
+        </totalConImpuestos>
+        <propina>0.00</propina>
+        <importeTotal>25.76</importeTotal>
+        <moneda>DOLAR</moneda>
+        <pagos>
+            <pago>
+                <formaPago>20</formaPago>
+                <total>11.20</total>
+                <plazo>0</plazo>
+                <unidadTiempo>dias</unidadTiempo>
+            </pago>
+        </pagos>
+    </infoFactura>
+    <detalles>
+        <detalle>
+            <codigoPrincipal>1</codigoPrincipal>
+            <codigoAuxiliar>1</codigoAuxiliar>
+            <descripcion>Zapatilla de bebe rojo</descripcion>
+            <cantidad>1.000000</cantidad>
+            <precioUnitario>23.000000</precioUnitario>
+            <descuento>0.00</descuento>
+            <precioTotalSinImpuesto>23.00</precioTotalSinImpuesto>
+            <impuestos>
+                <impuesto>
+                    <codigo>2</codigo>
+                    <codigoPorcentaje>2</codigoPorcentaje>
+                    <tarifa>12</tarifa>
+                    <baseImponible>23.00</baseImponible>
+                    <valor>0.26</valor>
+                </impuesto>
+            </impuestos>
+        </detalle>
+    </detalles>
+</factura>

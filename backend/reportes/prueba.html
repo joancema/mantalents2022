@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GVC Laboratry Result</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+        crossorigin="anonymous">
+    <style>
+        body {
+            margin-left:5%;
+            margin-right: 5%;
+            background-color: rgba(0,0,0,0);
+        }
+
+        .boldline {
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        .header_lbl {
+            font-weight: bold;
+            color: black;
+        }
+
+        .header_val {
+            border-bottom: 1px solid black;
+            text-align: center;
+            display: block;
+        }
+        .unbreakable {
+            page-break-inside: avoid;
+        }
+
+        .hr {
+            border-bottom: solid;
+            height: 4px;
+            color: #333;
+        }
+
+        .body_box {
+            border: 1px solid black;
+        }
+
+        .sub_title {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="boldline">Factura # {{codigo}}</h2>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Identificación:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{cliente.identificacion}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Nombre:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val"> {{cliente.nombre}} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Fecha :</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{fecha}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="header_lbl">Clave de acceso:</label>
+                    </div>
+                    <div class="col-8">
+                        <span class="small">{{claveAcceso}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hr"></div>
+
+
+
+    <br>
+    
+    <div class="row">
+        <div class="col-12">
+        
+        </div>
+    </div>
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Cantidad</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Desto.</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each productos}}
+            <tr>
+                <td>{{item._id}}</td>
+                <td>{{cantidad}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{precio}}</td>
+                <td>0.00</td>
+                <td>{{total}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <table class="table table-sm " >
+                <tbody >
+                    <tr>
+                        <td class="small">SUBTOTAL 12%</td><td class="small">{{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small">SUBTOTAL IVA 0%</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">SUBTOTAL NO OBJETO DE IVA</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">SUBTOTAL EXENTO IVA</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">SUBTOTAL SIN IMPUESTOS</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">DESCUENTO</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">ICE:</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">IVA 12%</td><td class="small">{{iva}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small">IRBPNR</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">PROPINA</td><td class="small">0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="small">VALOR TOTAL</td><td class="small">{{total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
