@@ -6,11 +6,11 @@
         <razonSocial>JOHN ANTONIO CEVALLOS MACIAS</razonSocial>
         <nombreComercial>JOHN ANONIO CEVALLOS MACIAS</nombreComercial>
         <ruc>1310024359001</ruc>
-        <claveAcceso>0511202101131002435900110010010000008020511802013</claveAcceso>
+        <claveAcceso>0511202101131002435900110010010000008030511803414</claveAcceso>
         <codDoc>01</codDoc>
         <estab>001</estab>
         <ptoEmi>001</ptoEmi>
-        <secuencial>000000802</secuencial>
+        <secuencial>000000803</secuencial>
         <dirMatriz>Carapungo Av. Luis Vacarri B9 S29 y Carihuairazo</dirMatriz>
         <agenteRetencion>00000001</agenteRetencion>
     </infoTributaria>
@@ -21,7 +21,7 @@
         <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
         <razonSocialComprador>PRUEBAS SERVICIO DE RENTAS INTERNAS</razonSocialComprador>
         <identificacionComprador>1713328506001</identificacionComprador>
-        <totalSinImpuestos>35.00</totalSinImpuestos>
+        <totalSinImpuestos>10.00</totalSinImpuestos>
         <totalDescuento>0.00</totalDescuento>
         <totalConImpuestos>
             <totalImpuesto>
@@ -33,12 +33,12 @@
             <totalImpuesto>
                 <codigo>2</codigo>
                 <codigoPorcentaje>2</codigoPorcentaje>
-                <baseImponible>39.20</baseImponible>
-                <valor>4.20</valor>
+                <baseImponible>11.20</baseImponible>
+                <valor>1.20</valor>
             </totalImpuesto>
         </totalConImpuestos>
         <propina>0.00</propina>
-        <importeTotal>39.20</importeTotal>
+        <importeTotal>11.20</importeTotal>
         <moneda>DOLAR</moneda>
         <pagos>
             <pago>
@@ -55,16 +55,16 @@
             <codigoAuxiliar>1</codigoAuxiliar>
             <descripcion>General</descripcion>
             <cantidad>1.000000</cantidad>
-            <precioUnitario>35.000000</precioUnitario>
+            <precioUnitario>10.000000</precioUnitario>
             <descuento>0.00</descuento>
-            <precioTotalSinImpuesto>35.00</precioTotalSinImpuesto>
+            <precioTotalSinImpuesto>10.00</precioTotalSinImpuesto>
             <impuestos>
                 <impuesto>
                     <codigo>2</codigo>
                     <codigoPorcentaje>2</codigoPorcentaje>
                     <tarifa>12</tarifa>
-                    <baseImponible>35.00</baseImponible>
-                    <valor>0.39</valor>
+                    <baseImponible>10.00</baseImponible>
+                    <valor>0.11</valor>
                 </impuesto>
             </impuestos>
         </detalle>
