@@ -23,8 +23,6 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /app
 
-# Run everything after as non-privileged user.
-USER pptruser
 
 
 # Create App Directory
@@ -41,5 +39,9 @@ COPY . .
 
 # Exports
 EXPOSE 8080
+
+# Run everything after as non-privileged user.
+USER pptruser
+
 
 CMD ["npm","start"]
