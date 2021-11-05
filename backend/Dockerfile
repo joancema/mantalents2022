@@ -40,6 +40,9 @@ COPY . .
 # Exports
 EXPOSE 8080
 
+RUN chown -R pptruser:pptruser /app
+RUN chmod 777 /usr/src/app
+
 # Run everything after as non-privileged user.
 USER pptruser
 
