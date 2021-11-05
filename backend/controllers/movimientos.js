@@ -109,6 +109,7 @@ const facturaElectronica =  async(req,res=response)=>{
     catch(err)
     {
         console.log(err)    
+        res.json(err);
     }
 
 }
