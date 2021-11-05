@@ -44,7 +44,7 @@ RUN chown -R pptruser:pptruser /usr/src/app
 RUN chmod 777 /usr/src/app
 
 # Run everything after as non-privileged user.
-USER pptruser
+USER root
 
 
 CMD ["npm","start"]
