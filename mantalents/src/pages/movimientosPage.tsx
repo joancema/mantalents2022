@@ -140,7 +140,15 @@ export const MovimientosPage= ()=>{
             setprocesando(true);
             fetchelectronica(record._id).then(resultado=>{
               console.log(resultado.data[0]);
-              const mensajeActual= resultado.data[0].RespuestaRecepcionComprobante.comprobantes.comprobante.mensajes.mensaje.mensaje;
+              let mensajeActual=""
+              if (resultado.data[0].RespuestaRecepcionComprobante)
+              {
+                mensajeActual= resultado.data[0].RespuestaRecepcionComprobante.comprobantes.comprobante.mensajes.mensaje.mensaje;
+              }
+              else
+              {
+                mensajeActual= resultado.data[0].RespuestaAutorizacionComprobante.autorizaciones.autorizacion.numeroAutorizacion;
+              }
               setprocesando(false);
               message.success(`Se presentaron los siguientes mensajes: ${mensajeActual} `);
             }).catch(err=>{
