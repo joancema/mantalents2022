@@ -47,27 +47,38 @@ const obtenerMovimiento = async(req, res = response ) => {
 }
 
 const facturaElectronica =  async(req,res=response)=>{
+
+    
+
+    try
+    {
+
+    
     const {id} = req.params;
     let movimiento =  await Movimiento.findById(id)
                             .populate('usuario','nombre')
                             .populate('cliente')
                             .populate('productos.item');
 
+    console.log("uno")
     let respuesta=  await generar(movimiento);
 
     movimiento.claveAcceso = respuesta.claveAcceso;
 
-
+    console.log("dos")
     const movimientoActualizado = await Movimiento.findByIdAndUpdate(id, { claveAcceso: respuesta.claveAcceso }, { new: true });
 
+    console.log("tres")
     movimiento.productos.forEach(p=>{
         p.total=p.cantidad*p.precio;
     })
 
+    console.log("cuatro")
+
 
     let out = await generarReporte(movimiento);
 
-
+    console.log("cinco")
 
     const enlace= path.join(__dirname,'../',"/uploads",'/facturas/',`${respuesta.claveAcceso}.pdf`);
     await  out.stream.pipe(fs.createWriteStream(enlace) );
@@ -75,6 +86,8 @@ const facturaElectronica =  async(req,res=response)=>{
     const dropbox = dropboxV2Api.authenticate({
         token: 'FJx5cgQhN7cAAAAAAAAAAZP9ymy8Hi3xOeOO27KVxlyAAfehAVtjJF9Y9HU1aXzV'
     });
+
+    console.log("seis")
 
     dropbox({
         resource: 'files/upload',
@@ -89,10 +102,15 @@ const facturaElectronica =  async(req,res=response)=>{
             console.log(err)
         }
     });
-
-
-    //out.stream.pipe(res);
+    console.log("siete")
     res.json(respuesta.respuesta);
+
+    }
+    catch(err)
+    {
+        console.log(err)    
+    }
+
 }
 
 const crearMovimiento = async(req, res = response ) => {
