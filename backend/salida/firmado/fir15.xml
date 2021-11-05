@@ -6,22 +6,22 @@
         <razonSocial>JOHN ANTONIO CEVALLOS MACIAS</razonSocial>
         <nombreComercial>JOHN ANONIO CEVALLOS MACIAS</nombreComercial>
         <ruc>1310024359001</ruc>
-        <claveAcceso>2810202101131002435900110010010000010012810001311</claveAcceso>
+        <claveAcceso>0511202101131002435900110010010000008020511802013</claveAcceso>
         <codDoc>01</codDoc>
         <estab>001</estab>
         <ptoEmi>001</ptoEmi>
-        <secuencial>000001001</secuencial>
+        <secuencial>000000802</secuencial>
         <dirMatriz>Carapungo Av. Luis Vacarri B9 S29 y Carihuairazo</dirMatriz>
         <agenteRetencion>00000001</agenteRetencion>
     </infoTributaria>
     <infoFactura>
-        <fechaEmision>28/10/2021</fechaEmision>
+        <fechaEmision>05/11/2021</fechaEmision>
         <dirEstablecimiento>Carapungo B9-S29</dirEstablecimiento>
         <obligadoContabilidad>SI</obligadoContabilidad>
         <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
         <razonSocialComprador>PRUEBAS SERVICIO DE RENTAS INTERNAS</razonSocialComprador>
         <identificacionComprador>1713328506001</identificacionComprador>
-        <totalSinImpuestos>23.00</totalSinImpuestos>
+        <totalSinImpuestos>35.00</totalSinImpuestos>
         <totalDescuento>0.00</totalDescuento>
         <totalConImpuestos>
             <totalImpuesto>
@@ -33,12 +33,12 @@
             <totalImpuesto>
                 <codigo>2</codigo>
                 <codigoPorcentaje>2</codigoPorcentaje>
-                <baseImponible>25.76</baseImponible>
-                <valor>2.76</valor>
+                <baseImponible>39.20</baseImponible>
+                <valor>4.20</valor>
             </totalImpuesto>
         </totalConImpuestos>
         <propina>0.00</propina>
-        <importeTotal>25.76</importeTotal>
+        <importeTotal>39.20</importeTotal>
         <moneda>DOLAR</moneda>
         <pagos>
             <pago>
@@ -53,50 +53,50 @@
         <detalle>
             <codigoPrincipal>1</codigoPrincipal>
             <codigoAuxiliar>1</codigoAuxiliar>
-            <descripcion>Zapatilla de bebe rojo</descripcion>
+            <descripcion>General</descripcion>
             <cantidad>1.000000</cantidad>
-            <precioUnitario>23.000000</precioUnitario>
+            <precioUnitario>35.000000</precioUnitario>
             <descuento>0.00</descuento>
-            <precioTotalSinImpuesto>23.00</precioTotalSinImpuesto>
+            <precioTotalSinImpuesto>35.00</precioTotalSinImpuesto>
             <impuestos>
                 <impuesto>
                     <codigo>2</codigo>
                     <codigoPorcentaje>2</codigoPorcentaje>
                     <tarifa>12</tarifa>
-                    <baseImponible>23.00</baseImponible>
-                    <valor>0.26</valor>
+                    <baseImponible>35.00</baseImponible>
+                    <valor>0.39</valor>
                 </impuesto>
             </impuestos>
         </detalle>
     </detalles>
-<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature415358">
-<ds:SignedInfo Id="Signature-SignedInfo37371">
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature93803">
+<ds:SignedInfo Id="Signature-SignedInfo132418">
 <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
 <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
-<ds:Reference Id="SignedPropertiesID355046" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature415358-SignedProperties190256">
+<ds:Reference Id="SignedPropertiesID992873" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature93803-SignedProperties884157">
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>46U0MUED434yFTfgje/E5dcxzQ4=</ds:DigestValue>
+<ds:DigestValue>C3UDtBNc0dMQNf2jobYxOmnru0E=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference URI="#Certificate679555">
+<ds:Reference URI="#Certificate927187">
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>ZQg17WdIhlOkL5Z2Lz8QVsUsQgM=</ds:DigestValue>
+<ds:DigestValue>LvDYef5+UXLIbVZf4FIa2CyIdLI=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference Id="Reference-ID-853800" URI="#comprobante">
+<ds:Reference Id="Reference-ID-85296" URI="#comprobante">
 <ds:Transforms>
 <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
 </ds:Transforms>
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>9exNktj2CU7n8rYr9K4G4OHk2lM=</ds:DigestValue>
+<ds:DigestValue>mNIhMHdzamuJbHhtbhr/nTn1YAw=</ds:DigestValue>
 </ds:Reference>
 </ds:SignedInfo>
-<ds:SignatureValue Id="SignatureValue83253">
-IjpwARyfO/Sej9qo4xHBle/IMKQJgU0zWYyhCR/qhjjLD+I0ey1Yd1LtFIpgsZjv2SmDnoyjuTKB
-Q58AlCHw7tBURmTJtokL/qT6BsaBVbycd9/S8hwC5DsPZBZu7Oa+ryCHjv/eKjNOi5UmsylBH2t4
-lZAIMq08XqCXtCCQQHI0Ui+HXWfMVzzQYmaFb1makWSiI6rCdITH+iB29jmpEc3Zd0ZPL+4/JurB
-LqPEAnmRX7MAdZqTNElQhxsYw4fczE+tcVzuiKp0xtUfYsukPw2y1cdYybwbbe64nmDHo3EF+xA2
-B6iDG2ibpBnTtFVbbdsdWka67Rps0ZBCK2t/8A==
+<ds:SignatureValue Id="SignatureValue860881">
+pvFuetH/nxgvgBjw/W+2HUEc/mKxRklX9hWSF4YzX/BXw9N9cEHuNyiuakJOEEJgBKNWJrUI2YH6
+T+be5CfCkxHgLOazR05aXaZIZ6tB+WY4dPAAYcyaahws70604Nv6N2EMOSplW/dOTgX44D2/VnFt
+xA8qO+OayG9yYDB++KDqRpyNq9Fj2VNM5XexaAFx+sihGwzs6j0X1aaFNbR5WwHORc0a8CiARqq0
+QsDT51eoftFpgxoH/G9FcoLus8qgH23Es+w/k1UGXn7/973Vuf5xN63lhSny5Fm1PMIKMWVRUDHq
+EabciPPngolF6SU++bKiTR42vlRCAf0pex+3HQ==
 </ds:SignatureValue>
-<ds:KeyInfo Id="Certificate679555">
+<ds:KeyInfo Id="Certificate927187">
 <ds:X509Data>
 <ds:X509Certificate>
 MIILwTCCCamgAwIBAgIEGEJuvDANBgkqhkiG9w0BAQsFADCBmTELMAkGA1UEBhMCRUMxHTAbBgNV
@@ -167,4 +167,4 @@ fG6AP0YnXNH7Pz6c18Ex0yLwzgsw8tWGb3hR9w==
 </ds:RSAKeyValue>
 </ds:KeyValue>
 </ds:KeyInfo>
-<ds:Object Id="Signature415358-Object166392"><etsi:QualifyingProperties Target="#Signature415358"><etsi:SignedProperties Id="Signature415358-SignedProperties190256"><etsi:SignedSignatureProperties><etsi:SigningTime>2021-11-03T21:32:05-05:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ex29c5PYhPn1YbULpk//qzwpiiA=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>407006908</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-853800"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>
+<ds:Object Id="Signature93803-Object381197"><etsi:QualifyingProperties Target="#Signature93803"><etsi:SignedProperties Id="Signature93803-SignedProperties884157"><etsi:SignedSignatureProperties><etsi:SigningTime>2021-11-05T21:23:12+00:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ex29c5PYhPn1YbULpk//qzwpiiA=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>407006908</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-85296"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>
