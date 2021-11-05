@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:current-alpine
 
 # ARG NODE_ENV=development
 
