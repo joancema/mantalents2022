@@ -50,6 +50,9 @@ async function generarReporte(movimientox)
               engine: 'handlebars',
               recipe: 'chrome-pdf',
               chrome: {
+                launchOptions: {
+                    args: ['--no-sandbox'],
+                },
                 displayHeaderFooter: true,
                 format: "A4",
                 waitForJS:false,
