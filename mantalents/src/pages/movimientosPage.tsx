@@ -12,7 +12,6 @@ import { Persona } from "../interfaces/fetchPersonas";
 import { Producto } from "../interfaces/fetchProductos";
 import { Producto as Productom } from "../interfaces/fetchMovimientos";
 import {Decimal} from "decimal.js-light";
-
 import { PostProducto } from "../interfaces/postMovimiento";
 import moment, { Moment } from "moment";
 import { ClienteComponente } from "../components/cliente";
@@ -35,7 +34,7 @@ export const MovimientosPage= ()=>{
         iva: 0,
         descuento: 0,
         total: 0,
-        fecha: moment(new Date() , "YYYY-MM-DD"),
+        fecha: moment(new Date() , "YYYY-MM-DD") ,
         productos: [{ item:"" , cantidad:1, precio:0 }]
       })
     }
@@ -172,6 +171,8 @@ export const MovimientosPage= ()=>{
       const { productos } = useProducto();
       const [formulario, setformulario] = useState(false);
       const onFinish = (values: {codigo:string, fecha:Moment, subtotal:number, iva:number, descuento:number, cliente:string ,total:number, productos: PostProducto[]}) => {
+
+
         setmovimiento({
           _id: movimiento._id,
           codigo: values.codigo,
@@ -194,7 +195,7 @@ export const MovimientosPage= ()=>{
 
         let clienteAuxiliar:Persona= personas.filter(p=>{return p._id===values.cliente})[0];
 
-        postmovimiento( movimiento._id, { codigo: values.codigo , fecha: values.fecha.toISOString().substr(0,10)  , cliente: values.cliente, productos: values.productos, subtotal: values.subtotal , iva: values.iva, descuento:values.descuento, total: values.total   } ).then(respuesta=>{
+        postmovimiento( movimiento._id, { codigo: values.codigo , fecha: values.fecha.format("YYYY-MM-DD")  , cliente: values.cliente, productos: values.productos, subtotal: values.subtotal , iva: values.iva, descuento:values.descuento, total: values.total   } ).then(respuesta=>{
           if (movimiento._id.length>0)
             setMovimientos( movimientos.map(ele=>{ if (ele._id===movimiento._id)
                return {
