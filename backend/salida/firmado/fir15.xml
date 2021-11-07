@@ -6,38 +6,22 @@
         <razonSocial>JOHN ANTONIO CEVALLOS MACIAS</razonSocial>
         <nombreComercial>JOHN ANONIO CEVALLOS MACIAS</nombreComercial>
         <ruc>1310024359001</ruc>
-<<<<<<< HEAD
-        <claveAcceso>0511202101131002435900110010010000008030511803414</claveAcceso>
+        <claveAcceso>0611202101131002435900110010010000008060611806111</claveAcceso>
         <codDoc>01</codDoc>
         <estab>001</estab>
         <ptoEmi>001</ptoEmi>
-        <secuencial>000000803</secuencial>
-=======
-        <claveAcceso>0411202101131002435900110010010000008050411805718</claveAcceso>
-        <codDoc>01</codDoc>
-        <estab>001</estab>
-        <ptoEmi>001</ptoEmi>
-        <secuencial>000000805</secuencial>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+        <secuencial>000000806</secuencial>
         <dirMatriz>Carapungo Av. Luis Vacarri B9 S29 y Carihuairazo</dirMatriz>
         <agenteRetencion>00000001</agenteRetencion>
     </infoTributaria>
     <infoFactura>
-<<<<<<< HEAD
-        <fechaEmision>05/11/2021</fechaEmision>
-=======
-        <fechaEmision>04/11/2021</fechaEmision>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+        <fechaEmision>06/11/2021</fechaEmision>
         <dirEstablecimiento>Carapungo B9-S29</dirEstablecimiento>
         <obligadoContabilidad>SI</obligadoContabilidad>
         <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
         <razonSocialComprador>PRUEBAS SERVICIO DE RENTAS INTERNAS</razonSocialComprador>
         <identificacionComprador>1713328506001</identificacionComprador>
-<<<<<<< HEAD
-        <totalSinImpuestos>10.00</totalSinImpuestos>
-=======
-        <totalSinImpuestos>7.00</totalSinImpuestos>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+        <totalSinImpuestos>34.00</totalSinImpuestos>
         <totalDescuento>0.00</totalDescuento>
         <totalConImpuestos>
             <totalImpuesto>
@@ -49,21 +33,12 @@
             <totalImpuesto>
                 <codigo>2</codigo>
                 <codigoPorcentaje>2</codigoPorcentaje>
-<<<<<<< HEAD
-                <baseImponible>11.20</baseImponible>
-                <valor>1.20</valor>
+                <baseImponible>38.08</baseImponible>
+                <valor>4.08</valor>
             </totalImpuesto>
         </totalConImpuestos>
         <propina>0.00</propina>
-        <importeTotal>11.20</importeTotal>
-=======
-                <baseImponible>7.84</baseImponible>
-                <valor>0.84</valor>
-            </totalImpuesto>
-        </totalConImpuestos>
-        <propina>0.00</propina>
-        <importeTotal>7.84</importeTotal>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+        <importeTotal>38.08</importeTotal>
         <moneda>DOLAR</moneda>
         <pagos>
             <pago>
@@ -80,89 +55,48 @@
             <codigoAuxiliar>1</codigoAuxiliar>
             <descripcion>General</descripcion>
             <cantidad>1.000000</cantidad>
-<<<<<<< HEAD
-            <precioUnitario>10.000000</precioUnitario>
+            <precioUnitario>34.000000</precioUnitario>
             <descuento>0.00</descuento>
-            <precioTotalSinImpuesto>10.00</precioTotalSinImpuesto>
-=======
-            <precioUnitario>7.000000</precioUnitario>
-            <descuento>0.00</descuento>
-            <precioTotalSinImpuesto>7.00</precioTotalSinImpuesto>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+            <precioTotalSinImpuesto>34.00</precioTotalSinImpuesto>
             <impuestos>
                 <impuesto>
                     <codigo>2</codigo>
                     <codigoPorcentaje>2</codigoPorcentaje>
                     <tarifa>12</tarifa>
-<<<<<<< HEAD
-                    <baseImponible>10.00</baseImponible>
-                    <valor>0.11</valor>
-=======
-                    <baseImponible>7.00</baseImponible>
-                    <valor>0.08</valor>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+                    <baseImponible>34.00</baseImponible>
+                    <valor>0.38</valor>
                 </impuesto>
             </impuestos>
         </detalle>
     </detalles>
-<<<<<<< HEAD
-<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature941704">
-<ds:SignedInfo Id="Signature-SignedInfo810887">
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature847441">
+<ds:SignedInfo Id="Signature-SignedInfo309320">
 <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
 <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
-<ds:Reference Id="SignedPropertiesID670758" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature941704-SignedProperties493173">
+<ds:Reference Id="SignedPropertiesID346461" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature847441-SignedProperties405004">
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>vPXpy5Sac8/hDwYugnKNAXFV5Gc=</ds:DigestValue>
+<ds:DigestValue>xzdf5EmHlEaouahrEf8ex2mEFVk=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference URI="#Certificate819377">
+<ds:Reference URI="#Certificate888751">
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>I6ReS/6mOz89s56jJ32uJfmKdwY=</ds:DigestValue>
+<ds:DigestValue>ISMMd6P68+2J1IJE5xbPyqhyt0c=</ds:DigestValue>
 </ds:Reference>
-<ds:Reference Id="Reference-ID-555458" URI="#comprobante">
-=======
-<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature367955">
-<ds:SignedInfo Id="Signature-SignedInfo993820">
-<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></ds:CanonicalizationMethod>
-<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></ds:SignatureMethod>
-<ds:Reference Id="SignedPropertiesID772682" Type="http://uri.etsi.org/01903#SignedProperties" URI="#Signature367955-SignedProperties304226">
-<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>ttj9nw1PDjfhjqGk5b5Z5R6A4ZQ=</ds:DigestValue>
-</ds:Reference>
-<ds:Reference URI="#Certificate619043">
-<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<ds:DigestValue>uc0zH0ZhLRMR7zu9rKesDfRYF50=</ds:DigestValue>
-</ds:Reference>
-<ds:Reference Id="Reference-ID-493191" URI="#comprobante">
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+<ds:Reference Id="Reference-ID-326157" URI="#comprobante">
 <ds:Transforms>
 <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
 </ds:Transforms>
 <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod>
-<<<<<<< HEAD
-<ds:DigestValue>7mxNIZRTWkjr/s6GigEOeqtKr2g=</ds:DigestValue>
+<ds:DigestValue>BVAdyYwdEWgJ13b2+dAC1lTF1u8=</ds:DigestValue>
 </ds:Reference>
 </ds:SignedInfo>
-<ds:SignatureValue Id="SignatureValue8149">
-awJcKnvGaOfI37gnbo/GZV9ctWfcucE8FCRG4wrpGszixo49/QQ06lZc6A+LhoHnq/Adhj+JN69L
-wPt2d7GX5a9XqawBpBR0qUcTqmsHfJDdpAZwWF8rjXehyPo/QlZHx8uUogaVHrdpnXPiwz7OhnW9
-TKe+qv+dMtTF+f/RCoq1JCP4wVwqIKO8AH/KiGJnKb01I6+8bQ4/kj6DWketTj4UAbwKEDVQ5h8t
-Ilyp9BIfSxIDqLAVYD5MCUMdbjjs+TGuksiGR1ybUEthR2ehxopR5QaK46njHgu8SEq59LDFY94F
-MykJFrvdgNDlt/f5eL/rFz3uJbTd9lMe+04ASQ==
+<ds:SignatureValue Id="SignatureValue62826">
+msFmkLwya0ABhJRyNtQK6fAKBfSkiYd1aL4fqo0HefTtfDyiLXad8vxf7TNR5mNntXXo3sxRTMG+
+ZuntHndTZ4+PNo8nqkrIOYvgdIw1or1+8QrmSKxnpHWJJ8RfPv0wOaXTxzBDuTKeUpFXSIvgLtSa
+N7ehDViK3XFi5rT793ET10CkJFVd12d6wn0KcwCxDeHycwV/JD8Q3rVKl8Exp6Yr3NJxtdliA0MZ
+gNeTcI/S18f6RZGatvoBBEa9TKTq045HC2Z8ifoaiQuq12HrVdR7Sv0mCyHxFAOmh51BejNaTTzb
+XDVLxgGuSCAmroaai1Im8153ygY6iguiwVEBRQ==
 </ds:SignatureValue>
-<ds:KeyInfo Id="Certificate819377">
-=======
-<ds:DigestValue>XPG8wNRQwsYWC13DTRek+Gosyq8=</ds:DigestValue>
-</ds:Reference>
-</ds:SignedInfo>
-<ds:SignatureValue Id="SignatureValue762503">
-XrozLDPVHuLQqwXEu+LSL0z+USlrvBfULOPWASAIFdoE067JAC7wPAUyQEFkYBbeDT5XDWG0LDZy
-qwlIbEiXNOCgxsjLFymAvNxBf8h/JQbKkE6vCbJHw2lGV8znbXYWDJ8a9XzJlJ8zKIeCOq/YQZFU
-g9veC8SMozKtEdxWIn7Yp/Tghggxv/tytHgp5T5zDqo9AoFSf8liwxvgN4LY8ANtq6chjlYOo+o1
-hD62t2sqsN8D8+olnM/dN4MBjsvjTaF2N2AUW7UWZ7MoEy9Xc0mymm7ARhi02tVLsC4fzae0s/h8
-OCMperwqO+uaMYvt1ziZvc3b1lRNgEtLKlFlsQ==
-</ds:SignatureValue>
-<ds:KeyInfo Id="Certificate619043">
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+<ds:KeyInfo Id="Certificate888751">
 <ds:X509Data>
 <ds:X509Certificate>
 MIILwTCCCamgAwIBAgIEGEJuvDANBgkqhkiG9w0BAQsFADCBmTELMAkGA1UEBhMCRUMxHTAbBgNV
@@ -233,8 +167,4 @@ fG6AP0YnXNH7Pz6c18Ex0yLwzgsw8tWGb3hR9w==
 </ds:RSAKeyValue>
 </ds:KeyValue>
 </ds:KeyInfo>
-<<<<<<< HEAD
-<ds:Object Id="Signature941704-Object813407"><etsi:QualifyingProperties Target="#Signature941704"><etsi:SignedProperties Id="Signature941704-SignedProperties493173"><etsi:SignedSignatureProperties><etsi:SigningTime>2021-11-05T21:47:03+00:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ex29c5PYhPn1YbULpk//qzwpiiA=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>407006908</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-555458"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>
-=======
-<ds:Object Id="Signature367955-Object198161"><etsi:QualifyingProperties Target="#Signature367955"><etsi:SignedProperties Id="Signature367955-SignedProperties304226"><etsi:SignedSignatureProperties><etsi:SigningTime>2021-11-05T17:07:44-05:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ex29c5PYhPn1YbULpk//qzwpiiA=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>407006908</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-493191"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>
->>>>>>> dd055727649b7d8c5c608a209d0124e29fcf4bc1
+<ds:Object Id="Signature847441-Object274351"><etsi:QualifyingProperties Target="#Signature847441"><etsi:SignedProperties Id="Signature847441-SignedProperties405004"><etsi:SignedSignatureProperties><etsi:SigningTime>2021-11-06T00:27:19+00:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></ds:DigestMethod><ds:DigestValue>Ex29c5PYhPn1YbULpk//qzwpiiA=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUBCA-2 SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A. 2,C=EC</ds:X509IssuerName><ds:X509SerialNumber>407006908</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-326157"><etsi:Description>contenido comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>
