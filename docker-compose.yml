@@ -29,15 +29,12 @@ services:
     volumes:
       - /opt/mongo/:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=jacm1310
+      - MONGO_INITDB_ROOT_USERNAME: root
+      - MONGO_INITDB_ROOT_PASSWORD: jacm1310
     ports:
       - "27017:27017"
     networks:
       - app-network
-    networks:
-      - app-network
-
 networks:
     app-network:
         driver: bridge
