@@ -32,15 +32,17 @@ const crearCita = async(req, res = response ) => {
     const { id } = req.params;
     const { estado, usuario, ...body } = req.body;
 
-    console.log(id);
+    console.log('creando')
     
     const data = {
         ...body,
         usuario: req.usuario._id
     }
+
+    const { _id, ...ndata } =  data;
     
     
-    const cita = new Cita(data );
+    const cita = new Cita(ndata );
     
     const nuevoCita = await cita.save();
 
@@ -57,6 +59,9 @@ const actualizarCita = async( req, res = response ) => {
 
     const { id } = req.params;
     const { estado, usuario, ...data } = req.body;
+
+
+    console.log('modificando')
 
 
     data.usuario = req.usuario._id;

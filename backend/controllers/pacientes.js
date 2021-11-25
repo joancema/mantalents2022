@@ -46,9 +46,11 @@ const crearPaciente = async(req, res = response ) => {
         usuario: req.usuario._id
     }
 
-    console.log(data)
+    const { _id, ...ndata } =  data;
 
-    const paciente = new Paciente(data );
+    console.log(ndata)
+
+    const paciente = new Paciente(ndata );
 
     // Guardar DB
     const nuevoPaciente = await paciente.save();
