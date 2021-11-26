@@ -11,9 +11,9 @@ import {
   UserOutlined,
   DollarOutlined,
   SettingFilled,
-  //CloseCircleOutlined,
   BarcodeOutlined,
   ShoppingCartOutlined,
+  MedicineBoxOutlined
 } from '@ant-design/icons';
 
 
@@ -24,6 +24,7 @@ import { MovimientosPage } from '../pages/movimientosPage';
 import { ProductosPage } from '../pages/productosPage';
 import { ClientesPage } from '../pages/clientesPage';
 import { AuthContext } from '../context/AuthContext';
+import { PacientesPage } from '../pages/pacientesPage';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -49,6 +50,8 @@ export const AppRouter=()=>{
         return <BarcodeOutlined />
       case "ShoppingCartOutlined":
         return <ShoppingCartOutlined />
+      case "MedicineBoxOutlined":
+        return <MedicineBoxOutlined/>
       default:
         return <TeamOutlined/>
     }
@@ -119,6 +122,7 @@ export const AppRouter=()=>{
                     <Route exact path="/app/productos" component={ProductosPage }/>
                     <Route exact path="/app/clientes" component={ClientesPage }/>
                     <Route exact path="/app/movimientos" component={MovimientosPage }/>
+                    <Route exact path="/app/pacientes" component={PacientesPage }/>
                     <Redirect to ="/app/movimientos"/>
                 </Switch>
             </Content>
