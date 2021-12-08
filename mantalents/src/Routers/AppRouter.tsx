@@ -13,7 +13,8 @@ import {
   SettingFilled,
   BarcodeOutlined,
   ShoppingCartOutlined,
-  MedicineBoxOutlined
+  MedicineBoxOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 
 
@@ -25,6 +26,8 @@ import { ProductosPage } from '../pages/productosPage';
 import { ClientesPage } from '../pages/clientesPage';
 import { AuthContext } from '../context/AuthContext';
 import { PacientesPage } from '../pages/pacientesPage';
+import { HomePage } from '../pages/homePage';
+import { CalendarioPage } from '../pages/calendarioPage';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -52,6 +55,8 @@ export const AppRouter=()=>{
         return <ShoppingCartOutlined />
       case "MedicineBoxOutlined":
         return <MedicineBoxOutlined/>
+      case "HomeOutlined":
+        return <HomeOutlined/>
       default:
         return <TeamOutlined/>
     }
@@ -118,11 +123,13 @@ export const AppRouter=()=>{
             <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: '16px 16px' }}>
                 <Switch>
+                    <Route exact path="/app/home" component={HomePage }/>
                     <Route exact path="/app/categorias" component={CategoriasPage }/>
                     <Route exact path="/app/productos" component={ProductosPage }/>
                     <Route exact path="/app/clientes" component={ClientesPage }/>
                     <Route exact path="/app/movimientos" component={MovimientosPage }/>
                     <Route exact path="/app/pacientes" component={PacientesPage }/>
+                    <Route exact path="/app/calendario" component={CalendarioPage }/>
                     <Redirect to ="/app/movimientos"/>
                 </Switch>
             </Content>

@@ -55,16 +55,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     const [ auth, setAuth ] = useState<auth>(initialState)
 
     const login = async( email:string, password :string) => {
-
-
         const resp = await postlogin(email, password );
-
         if ( resp.usuario ) {
             localStorage.setItem('token', resp.token );
             const { usuario } = resp;
-
-            console.log(usuario.opciones)
-
             setAuth({
                 uid: usuario.uid ,
                 checking: false,

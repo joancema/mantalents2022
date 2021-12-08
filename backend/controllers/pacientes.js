@@ -10,9 +10,10 @@ const obtenerPacientes = async(req, res = response ) => {
         Paciente.countDocuments(query),
         Paciente.find(query)
             .populate('usuario', 'nombre')
-            .populate('citas')
-            .skip( Number( desde ) )
-            .limit(Number( limite ))
+            .populate({path:'citas', populate:{path:'usuario', select:'nombre'}})
+            //.populate('citas.usuario')
+            //.skip( Number( desde ) )
+            //.limit(Number( limite ))
     ]);
 
     res.json({
@@ -25,7 +26,7 @@ const obtenerPaciente = async(req, res = response ) => {
     const { id } = req.params;
     const paciente = await Paciente.findById( id )
                             .populate('usuario', 'nombre')
-                            .populate('citas')
+                            .populate({path:'citas', populate:{path:'usuario', select:'nombre'}})
     res.json( paciente );
 
 }

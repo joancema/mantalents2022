@@ -1,13 +1,23 @@
-import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider, DatePicker, Upload, Image } from "antd";
-import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined } from '@ant-design/icons';
-import { tableColumnTextFilterConfig } from "../helpers/tableUtils";
-import { Paciente, Cita } from "../interfaces/fetchPacientes";
-import { usePaciente } from "../hooks/usePaciente";
-import { useState } from "react";
-import moment, { Moment } from "moment";
-import { getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
+import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider,
+   DatePicker, Upload, Image, InputNumber } from "antd";
+   import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined } from '@ant-design/icons';
+   import { tableColumnTextFilterConfig } from "../helpers/tableUtils";
+   import { Paciente, Cita } from "../interfaces/fetchPacientes";
+   import { usePaciente } from "../hooks/usePaciente";
+   import { useState } from "react";
+   import moment, { Moment } from "moment";
+   import { getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
+
+   const { TextArea } = Input;
 
 export const PacientesPage= ( )=>{
+  const devolverEdad=(parametro:Moment|null )=>{
+    const fechaActual= new Date();
+    let edadActual= (fechaActual.getFullYear()- (parametro?.year()??0)   )
+    Forma.setFieldsValue({
+      edad: edadActual
+    })
+  }
   const cambiarFotoBefore=( archivo: File )=>{
     setarchivo(archivo);
   }
@@ -20,7 +30,7 @@ export const PacientesPage= ( )=>{
       setformulario(true);
       setpaciente({_id:"", rut:"",nombre:"", direccion:"", telefono:""
      , alergia:"", citas:[], fechanacimiento: new Date(), sexo:"", nacionalidad:""
-    , email:"", previsionsalud:"", otrosdatos:"" });
+    , email:"", previsionsalud:"", otrosdatos:"", estadocivil:"" });
     setCitas([]);
       Forma.setFieldsValue({
         rut:"",
@@ -35,6 +45,7 @@ export const PacientesPage= ( )=>{
         email:"",
         previsionsalud:"",
         otrosdatos:"",
+        estadocivil:"",
       })
     }
     const crearCita=()=>{
@@ -45,7 +56,7 @@ export const PacientesPage= ( )=>{
       setcitaactual({
         _id:"", anamnesis:"", diagnostico:"", estatura:"", fechaproximaatencion:new Date(),
         imc:"", medicamento:"", peso:'', presionalterial:'',pulso:'',temperatura:'', tratamiento:"",
-        fecha:new Date(), hemo:"", img:undefined
+        fecha:new Date(), hemo:"", img:undefined, motivo:"", saturacion:""
       });
       FormaCita.setFieldsValue({
         estatura:"",
@@ -72,18 +83,20 @@ export const PacientesPage= ( )=>{
     const [adjunto, setadjunto] = useState<File>();
     
       const [paciente, setpaciente] = useState<Paciente>({_id:'', nombre:'', rut:'',direccion:'', telefono:''
-      , citas:[], fechanacimiento: new Date(), alergia:'', sexo:'', email:'', nacionalidad:'', previsionsalud:'', otrosdatos:''  });
+      , citas:[], fechanacimiento: new Date(), alergia:'', sexo:'', email:'', nacionalidad:'', previsionsalud:'', otrosdatos:'', estadocivil:''  });
       const [citaactual, setcitaactual]= useState<Cita>({
         _id:"", anamnesis:"", diagnostico:"", estatura:"", fechaproximaatencion:new Date(),
         imc:"", medicamento:"", peso:'', presionalterial:'',pulso:'',temperatura:'', tratamiento:"",
-        fecha:new Date(), hemo:""
+        fecha:new Date(), hemo:"", motivo:"", saturacion:""
       });
       const [formulario, setformulario] = useState(false);
       const [cita, setcita] = useState(false);
+      const [edad,setedad] = useState(0);
       const [idcita, setidcita]= useState<string>("");
     const onFinishCita = async (values: {peso:string, estatura:string, temperatura:string, 
       presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
-    anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, 
+    anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
+    saturacion:string,
     fechaproximaatencion:Moment}) => {
       const citax = {
         _id: idcita,
@@ -94,12 +107,14 @@ export const PacientesPage= ( )=>{
         imc: values.imc,
         pulso: values.pulso,
         hemo: values.hemo,
-        fecha: new Date(values.fecha.toISOString().substr(0,10) ),
+        fecha:  new Date(values.fecha.toDate().toISOString() ),
         anamnesis: values.anamnesis,
         diagnostico: values.diagnostico,
         tratamiento: values.tratamiento,
         medicamento: values.medicamento,
-        fechaproximaatencion: new Date(values.fechaproximaatencion.toISOString().substr(0,10) ),
+        motivo:values.motivo,
+        saturacion: values.saturacion,
+        fechaproximaatencion: new Date(values.fechaproximaatencion.toISOString() ),
       };
       let respuesta:Cita =  await postcita({...citax}, paciente._id );
       let respuestaConAdjunto:Cita = { ...respuesta };
@@ -146,7 +161,7 @@ export const PacientesPage= ( )=>{
       }
     const onFinish= async (values:{ rut:string, nombre:string, direccion:string, 
         telefono:string, alergia:string, sexo:string, email:string,
-      previsionsalud:string, otrosdatos:string, fechanacimiento:Moment, nacionalidad:string })=>{
+      previsionsalud:string, otrosdatos:string, fechanacimiento:Moment, nacionalidad:string, estadocivil:string })=>{
         const pacientex = {
           _id: paciente._id,
           rut: values.rut,
@@ -159,7 +174,8 @@ export const PacientesPage= ( )=>{
           alergia:values.alergia,
           sexo: values.sexo,
           email: values.email,
-          nacionalidad: values.nacionalidad
+          nacionalidad: values.nacionalidad,
+          estadocivil: values.estadocivil,
         };
         setpaciente(pacientex);
         let respuesta:Paciente = await  postpaciente(pacientex);
@@ -178,7 +194,7 @@ export const PacientesPage= ( )=>{
               alergia: values.alergia, rut: values.rut
               , fechanacimiento: new Date(values.fechanacimiento.toISOString().substr(0,10) ) ,
               previsionsalud: values.previsionsalud, sexo: values.sexo,
-              nacionalidad: values.nacionalidad, email: values.email,
+              nacionalidad: values.nacionalidad, email: values.email, estadocivil: values.estadocivil,
               img: respuestaConFoto.img,
             } ; else return ele;}) )
         }
@@ -195,17 +211,25 @@ export const PacientesPage= ( )=>{
         title: 'Fecha',
         dataIndex: 'fecha',
         key: 'fecha',
-        render: (valor: any) =>  (typeof(valor)==="string")?valor.substr(0,10) : moment(valor).format("YYYY-MM-DD")  ,
+        width: "10%",
+        render: (valor: any) =>  (typeof(valor)==="string")?valor.substr(0,16).replace("T"," ") : moment(valor).format("YYYY-MM-DD hh:mm")  ,
+      },
+      {
+        title: 'Usuario doctor',
+        dataIndex: ['usuario','nombre'],
+        key: 'usuario',
+        width: '10%',
       },
       {
         title: 'Anamnesis',
         dataIndex: 'anamnesis',
         key: 'anamnesis',
+        width: '50%',
       },
       {
         title: 'Acciones',
         key: 'acciones',
-        width:200,
+        width: "10%" ,
         fixed:'right' as 'right',
         render: ( record: Cita) => <Button type="primary" shape="circle" icon={ <EditOutlined/> } onClick=
         { ()=>
@@ -223,12 +247,14 @@ export const PacientesPage= ( )=>{
               imc: record.imc,
               pulso: record.pulso,
               hemo: record.hemo,
-              fecha: moment(record.fecha, "YYYY-MM-DD"),
+              fecha: moment(new Date(record.fecha), "YYYY-MM-DD hh:mm:ss a"),
               anamnesis: record.anamnesis,
               diagnostico: record.diagnostico,
               tratamiento: record.tratamiento,
               medicamento: record.medicamento,
-              fechaproximaatencion: moment(record.fechaproximaatencion, "YYYY-MM-DD"),
+              saturacion: record.saturacion,
+              motivo: record.motivo,
+              fechaproximaatencion: moment(new Date(record.fechaproximaatencion), "YYYY-MM-DD hh:mm:ss a"),
             });
           } 
         }/>,
@@ -240,6 +266,7 @@ export const PacientesPage= ( )=>{
           title: 'Nombre',
           dataIndex: 'nombre',
           key: 'nombre',
+          width: "20%",
           render: (text: string) => text,
           ...tableColumnTextFilterConfig<Paciente>(),
           onFilter: (value: {}, record: Paciente  ):boolean => {
@@ -248,19 +275,33 @@ export const PacientesPage= ( )=>{
           sorter: (a:Paciente, b:Paciente) => a.nombre.length - b.nombre.length,
         },
         {
-          title: 'RUT',
+          title: 'Nro. Identificación',
           dataIndex: 'rut',
           key: 'rut',
+          width: "20%",
+          render: (text: string) => text,
+          ...tableColumnTextFilterConfig<Paciente>(),
+          onFilter: (value: {}, record: Paciente  ):boolean => {
+            return record.rut.toLowerCase().includes(value.toString().toLowerCase())
+          },
+          sorter: (a:Paciente, b:Paciente) => a.rut.length - b.rut.length,
+        },
+        {
+          title: 'Usuario',
+          dataIndex: ['usuario','nombre'],
+          key: 'usuario',
+          width: '10%',
         },
         {
           title: 'Acciones',
           key: 'acciones',
-          width:200,
+          width:"10%",
           fixed:'right' as 'right',
           render: ( record: Paciente) => <Button type="primary" shape="circle" icon={ <EditOutlined/> } onClick=
           { ()=>
           
             { 
+              console.log(record.fechanacimiento);
               setformulario(true); 
               setpaciente(record);
               setarchivo(undefined);
@@ -277,8 +318,11 @@ export const PacientesPage= ( )=>{
                 alergia: record.alergia,
                 previsionsalud: record.previsionsalud,
                 otrosdatos: record.otrosdatos,
-                fechanacimiento: moment(record.fechanacimiento, "YYYY-MM-DD")
+                fechanacimiento: moment(new Date(record.fechanacimiento), "YYYY-MM-DD"),
+                edad: moment(new Date()).year() - moment(new Date(record.fechanacimiento), "YYYY-MM-DD").year() ,
+                estadocivil:record.estadocivil
               })
+              
               
             } 
           }/>,
@@ -302,7 +346,7 @@ export const PacientesPage= ( )=>{
            dataSource={pacientes} columns={columns} />
         </Row>
         <Drawer
-          title="Paciente"
+          title="Datos del Paciente"
           width={720}
           height={650}
           onClose={()=>{ setformulario(false); }}
@@ -315,7 +359,7 @@ export const PacientesPage= ( )=>{
           <Form
               form= {Forma}
               name="formpaciente"
-              labelCol={{ span: 3 }}
+              labelCol={{ span: 6 }}
               wrapperCol={{ span: 16 }}
               size={"small"}
               initialValues={{ remember: true }}
@@ -342,59 +386,79 @@ export const PacientesPage= ( )=>{
                     </Form.Item>
                     }
                 <Form.Item
-                  label="RUT"
+                  label="Nro. Identificación"
                   name="rut"
                   rules={[{ required: true, message: 'Por favor ingrese el RUT' }]}>
-                  <Input />
+                  <Input style={{width:"40%"}} placeholder="RUT:(Ej. 12345678-9)" />
+                  (DNI, RUN, RUT, CI, PAS, etc.)
                 </Form.Item>
                 <Form.Item
-                  label="Nombre"
+                  label="Nombre Completo"
                   name="nombre"
                   rules={[{ required: true, message: 'Por favor ingrese el Nombre' }]}>
-                  <Input />
+                  <Input style={{ width:"70%", textTransform: 'uppercase' }} placeholder="APELLIDOS PRIMEROS" />
                 </Form.Item>
-                <Form.Item
-                  label="Dirección"
-                  name="direccion">
-                  <Input />
+                <Form.Item label="Fecha de Nacimiento"
+                 name="fechanacimiento"
+                 rules={[{ required: true, message: 'Por favor ingrese fecha de nacimiento' }]}>
+                  <DatePicker onChange={ devolverEdad } />
                 </Form.Item>
-                <Form.Item
-                  label="Teléfono"
-                  name="telefono">
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="E-mail"
-                  name="email">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="F. Nacimiento" name="fechanacimiento">
-                  <DatePicker/>
+                <Form.Item label="Edad" name="edad">
+                  <InputNumber />
                 </Form.Item>
                 <Form.Item
                   label="Sexo"
-                  name="sexo">
-                  <Input />
+                  name="sexo"
+                  rules={[{ required: true, message: 'Por favor ingrese el sexo del paciente' }]}>
+                  <Input style={{width:"10%", textTransform: 'capitalize'}} />
+                </Form.Item>
+                <Form.Item
+                  label="Estado Civil"
+                  name="estadocivil">
+                  <Input style={{width:"20%", textTransform:"capitalize"}} />
+                </Form.Item>
+                <Form.Item
+                  label="Provisión de Salud"
+                  name="previsionsalud">
+                  <TextArea style={{width:"80%", textTransform: 'uppercase'}} />
+                </Form.Item>
+                <Form.Item
+                  label="e-mail"
+                  name="email"
+                  rules={
+                    [
+                      { required: true, message: 'Por favor ingrese el correo electrónico' },
+                      { type: 'email', message:'Debe ser un correo electrónico válido'}
+                      ]}>
+                  <Input style={{width:"40%"}} />
+                </Form.Item>
+                <Form.Item
+                  label="Dirección"
+                  name="direccion"
+                  rules={[{ required: true, message: 'Por favor ingrese la dirección' }]}>
+                  <TextArea style={{width:"80%"}} />
+                </Form.Item>
+                <Form.Item
+                  label="Teléfono"
+                  name="telefono"
+                  rules={[{ required: true, message: 'Por favor ingrese teléfono' }]}>
+                  <TextArea style={{width:"50%"}} />
                 </Form.Item>
                 <Form.Item
                   label="Nacionalidad"
                   name="nacionalidad">
-                  <Input />
+                  <Input style={{width:"50%", textTransform:'capitalize'}}  />
                 </Form.Item>
                 <Form.Item
                   label="Alergia"
                   name="alergia">
-                  <Input />
+                  <TextArea style={{width:"80%", textTransform: 'uppercase', color:"red"  }} />
                 </Form.Item>
-                <Form.Item
-                  label="Provisión S."
-                  name="previsionsalud">
-                  <Input />
-                </Form.Item>
+                
                 <Form.Item
                   label="Otros datos"
                   name="otrosdatos">
-                  <Input />
+                  <TextArea style={{width:"80%", textTransform: 'uppercase'}} />
                 </Form.Item>
                 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
@@ -410,9 +474,10 @@ export const PacientesPage= ( )=>{
               <Button type="primary" shape="circle" disabled={paciente._id.length===0} icon={<PlusOutlined />} size={'large'} onClick={crearCita} />
             </Col>
           </Row>
-          <Divider orientation="left">Citas</Divider>
+          <Divider orientation="left">Consultas</Divider>
           <Row gutter= {[16, 24]}>
           <Table tableLayout='fixed'
+          size="small"
            loading= {isLoading}
            rowKey='_id'
            pagination={{ defaultPageSize: 5, showSizeChanger: true,
@@ -424,7 +489,7 @@ export const PacientesPage= ( )=>{
           </Row>
         </Drawer>
         <Drawer
-          title="Cita"
+          title="Consulta"
           width={720}
           height={650}
           onClose={()=>{ setcita(false); }}
@@ -444,34 +509,28 @@ export const PacientesPage= ( )=>{
               autoComplete="off">
                 <Row>
                 <Col xs={2} sm={4} md={6} lg={8} xl={12}>
+                <Form.Item label="Fecha" name="fecha">
+                  <DatePicker 
+                  showTime={{ format: 'HH:mm' }}
+                  format="YYYY-MM-DD HH:mm"
+                  />
+                </Form.Item>
                 <Form.Item
-                  label="Peso"
-                  name="peso"
-                  rules={[{ required: true, message: 'Por favor ingrese peso' }]}>
+                  label="Motivo de la consulta"
+                  name="motivo"
+                  rules={[{ required: true, message: 'Por favor ingrese motivo de la consulta' }]}>
                   <Input />
                 </Form.Item>
                 <Form.Item
-                  label="Estatura"
-                  name="estatura"
-                  rules={[{ required: true, message: 'Por favor ingrese estatura' }]}>
-                  <Input />
+                  label="Anamnesis"
+                  name="anamnesis"
+                  rules={[{ required: true, message: 'Por favor ingrese anamnesis' }]}>
+                  <TextArea />
                 </Form.Item>
                 <Form.Item
-                  label="Temperatura"
-                  name="temperatura"
-                  rules={[{ required: true, message: 'Por favor ingrese temperatura' }]}>
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="Presión Alterial"
+                  label="Presión Arterial"
                   name="presionalterial"
                   rules={[{ required: true, message: 'Por favor ingrese presión alterial' }]}>
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="IMC"
-                  name="imc"
-                  rules={[{ required: true, message: 'Por favor ingrese IMC' }]}>
                   <Input />
                 </Form.Item>
                 <Form.Item
@@ -481,44 +540,65 @@ export const PacientesPage= ( )=>{
                   <Input />
                 </Form.Item>
                 <Form.Item
-                  label="Hemo"
-                  name="hemo"
-                  rules={[{ required: true, message: 'Por favor ingrese pulso' }]}>
+                  label="Estatura"
+                  name="estatura"
+                  rules={[{ required: true, message: 'Por favor ingrese estatura' }]}>
                   <Input />
-                </Form.Item>
-                <Form.Item label="Fecha"
-                 name="fecha">
-                  <DatePicker/>
                 </Form.Item>
                 <Form.Item
-                  label="Anamnesis"
-                  name="anamnesis"
-                  rules={[{ required: true, message: 'Por favor ingrese anamnesis' }]}>
+                  label="Peso"
+                  name="peso"
+                  rules={[{ required: true, message: 'Por favor ingrese peso' }]}>
                   <Input />
+                </Form.Item>
+                <Form.Item
+                  label="I.M.C."
+                  name="imc"
+                  rules={[{ required: true, message: 'Por favor ingrese IMC' }]}>
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Temperatura"
+                  name="temperatura"
+                  rules={[{ required: true, message: 'Por favor ingrese temperatura' }]}>
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Hemoglucotest"
+                  name="hemo">
+                  <Input />
+                </Form.Item>
+                
+                </Col>
+                <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+                <Form.Item
+                  label="Saturación de oxígeno"
+                  name="saturacion">
+                  <Input />
+                </Form.Item>
+                <Form.Item
+                  label="Examen físico"
+                  name="medicamento"
+                  rules={[{ required: true, message: 'Por favor ingrese medicamento' }]}>
+                  <TextArea />
                 </Form.Item>
                 <Form.Item
                   label="Diagnóstico"
                   name="diagnostico"
                   rules={[{ required: true, message: 'Por favor ingrese diagnóstico' }]}>
-                  <Input />
+                  <TextArea />
                 </Form.Item>
-                </Col>
-                <Col xs={2} sm={4} md={6} lg={8} xl={10}>
                 <Form.Item
                   label="Tratamiento"
                   name="tratamiento"
                   rules={[{ required: true, message: 'Por favor ingrese tratamiento' }]}>
-                  <Input />
+                  <TextArea />
                 </Form.Item>
-                <Form.Item
-                  label="Medicamento"
-                  name="medicamento"
-                  rules={[{ required: true, message: 'Por favor ingrese medicamento' }]}>
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Próxima atención"
-                 name="fechaproximaatencion">
-                  <DatePicker/>
+                <Form.Item label="Próxima atención" name="fechaproximaatencion">
+                  <DatePicker 
+                  showTime={{ format: 'HH:mm' }}
+                  format="YYYY-MM-DD HH:mm"
+                  />
                 </Form.Item>
                 <Form.Item label="Adjunto" name="adjunto">
                     <Upload

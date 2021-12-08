@@ -15,6 +15,7 @@ const PacienteSchema= new Schema({
     previsionsalud:{type:String, required:false},
     otrosdatos:{type:String, required:false},
     estado:{type:Boolean, required:true, default: true},
+    estadocivil:{type:String, required:false},
     img:{type:String},
     usuario: {
         type: Schema.Types.ObjectId,

@@ -1,12 +1,13 @@
 import { cafeApi } from "../api/cafeApi"
 import { Categoria, FetchCategorias } from "../interfaces/fetchCategorias";
-const token = localStorage.getItem('token') || '';
+
 
 export const fetchcategorias = async (): Promise<Categoria[]> =>{
     const resp= await  cafeApi.get<FetchCategorias>('/categorias');
     return resp.data.categorias;
 }
 export const postcategoria= async (categoria: Categoria): Promise<Categoria> =>{
+    const token = localStorage.getItem('token') || '';
     let resp;
     if (categoria._id.length>0)
     {

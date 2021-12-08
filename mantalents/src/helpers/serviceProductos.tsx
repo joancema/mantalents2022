@@ -1,7 +1,7 @@
 import { cafeApi } from "../api/cafeApi"
 import { Producto, FetchProductos, ProductoPlano } from "../interfaces/fetchProductos";
 
-const token = localStorage.getItem('token') || '';
+
 
 export const fetchproductos = async (): Promise<Producto[]> =>{
     const resp= await  cafeApi.get<FetchProductos>('/productos');
@@ -17,7 +17,6 @@ export const getFileProducto = (parametro:string):string=>{
 export const postFileProducto = async (idx:string, archivo:File ): Promise<Producto>=>{
     let formData = new FormData();
     formData.append("archivo", archivo);
-
     const resp =  await cafeApi.put(`/uploads/productos/${idx}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -26,6 +25,7 @@ export const postFileProducto = async (idx:string, archivo:File ): Promise<Produ
     return resp.data;
 }
 export const postproducto= async (producto: ProductoPlano): Promise<Producto> =>{
+    const token = localStorage.getItem('token') || '';
     let resp;
     console.log(producto);
     if (producto.id.length>0)

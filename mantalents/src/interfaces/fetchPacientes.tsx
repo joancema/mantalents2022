@@ -19,6 +19,7 @@ export interface Paciente {
     nacionalidad:    string;
     previsionsalud:  string;
     otrosdatos:      string;
+    estadocivil?:    string;
     img?:            string;
     usuario?:         Usuario;
 }
@@ -38,7 +39,9 @@ export interface Cita {
     diagnostico:          string;
     tratamiento:          string;
     medicamento:          string;
-    fechaproximaatencion: Date;
+    fechaproximaatencion:  Date;
+    motivo:                string;
+    saturacion:            string;
     usuario?:              string;
     img?:                  string;
     __v?:                  number;

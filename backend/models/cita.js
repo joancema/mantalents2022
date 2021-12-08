@@ -19,10 +19,13 @@ const CitaSchema= new Schema({
     fechaproximaatencion:{type:Date, required:false},
     img:{type:String, required:false},
     estado:{type:Boolean, required:true, default:true},
+    motivo:{type:String, required:false},
+    saturacion:{type:String, required:false},
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
-        required: true
+        required: true,
+        autopopulate: true
     },
 })
 CitaSchema.methods.toJSON = function() {

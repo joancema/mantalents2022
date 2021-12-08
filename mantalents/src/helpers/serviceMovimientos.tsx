@@ -2,7 +2,7 @@ import { cafeApi } from "../api/cafeApi"
 import { Movimiento, FetchMovimientos } from "../interfaces/fetchMovimientos";
 import { PostMovimiento } from "../interfaces/postMovimiento";
 
-const token = localStorage.getItem('token') || '';
+
 
 export const fetchmovimientos = async (): Promise<Movimiento[]> =>{
     const resp= await  cafeApi.get<FetchMovimientos>('/movimientos');
@@ -24,7 +24,7 @@ export const fetchDescargar=async (idx:string) : Promise<any> =>{
 
 }
 export const postmovimiento= async (idx: string, movimiento: PostMovimiento): Promise<Movimiento> =>{
-    //console.log(JSON.stringify(movimiento) )
+    const token = localStorage.getItem('token') || '';
     let resp;
     if (idx.length>0)
     {
