@@ -91,7 +91,6 @@ export const PacientesPage= ( )=>{
       });
       const [formulario, setformulario] = useState(false);
       const [cita, setcita] = useState(false);
-      const [edad,setedad] = useState(0);
       const [idcita, setidcita]= useState<string>("");
     const onFinishCita = async (values: {peso:string, estatura:string, temperatura:string, 
       presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
@@ -385,13 +384,19 @@ export const PacientesPage= ( )=>{
                       />
                     </Form.Item>
                     }
+              <Form.Item label="Nro. Identificación" style={{ marginBottom: 0 }}>
                 <Form.Item
-                  label="Nro. Identificación"
                   name="rut"
+                  style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
                   rules={[{ required: true, message: 'Por favor ingrese el RUT' }]}>
-                  <Input style={{width:"40%"}} placeholder="RUT:(Ej. 12345678-9)" />
-                  (DNI, RUN, RUT, CI, PAS, etc.)
+                  <Input style={{width:"80%", display:"inline-block" }} placeholder="RUT:(Ej. 12345678-9)" />
                 </Form.Item>
+                <span
+                  style={{ display: 'inline-block', width: '200px', lineHeight: '32px', textAlign: 'left' }}
+                >
+                  (DNI, RUN, RUT, CI, PAS, etc.)
+                </span>
+              </Form.Item>
                 <Form.Item
                   label="Nombre Completo"
                   name="nombre"
