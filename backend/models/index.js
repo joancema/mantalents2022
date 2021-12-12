@@ -9,6 +9,7 @@ const Movimiento = require('./movimiento');
 const Persona = require('./persona');
 const Paciente = require('./paciente');
 const Cita = require('./cita');
+const Citaprevia = require('./citaprevia');
 
 
 
@@ -21,6 +22,7 @@ module.exports = {
     Movimiento,
     Persona,
     Paciente,
-    Cita
+    Cita,
+    Citaprevia
 }
 

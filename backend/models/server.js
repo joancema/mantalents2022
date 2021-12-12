@@ -20,7 +20,8 @@ class Server {
             uploads:    '/api/uploads',
             movimientos:'/api/movimientos',
             pacientes:'/api/pacientes',
-            citas:'/api/citas'
+            citas:'/api/citas',
+            citasprevias:'/api/citasprevias',
         }
 
 
@@ -72,6 +73,7 @@ class Server {
         this.app.use( this.paths.movimientos, require('../routes/movimientos'));
         this.app.use(this.paths.pacientes, require('../routes/pacientes'));
         this.app.use(this.paths.citas, require('../routes/citas'));
+        this.app.use(this.paths.citasprevias, require('../routes/citasprevias'));
         
     }
 
