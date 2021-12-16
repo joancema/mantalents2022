@@ -6,7 +6,7 @@ import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider,
    import { usePaciente } from "../hooks/usePaciente";
    import { useState } from "react";
    import moment, { Moment } from "moment";
-   import { fetchPacienteCita, getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
+   import { fetchDescargar, fetchPacienteCita, getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
 
    const { TextArea } = Input;
 
@@ -260,7 +260,8 @@ export const PacientesPage= ( )=>{
         }/>
         <Button type="primary" shape="circle" icon={ <DownloadOutlined /> } onClick={()=>{
           fetchPacienteCita(record._id).then(respuesta=>{
-            window.open(`http://localhost/uploads/consultas/${record._id}.pdf`,'_blank');
+            //window.open(`http://localhost/uploads/consultas/${record._id}.pdf`,'_blank');
+            fetchDescargar(record._id)
           })
         }}/>
         </>,
