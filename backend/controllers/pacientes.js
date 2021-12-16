@@ -1,5 +1,9 @@
+const fs = require('fs');
+
 const { Paciente } = require('../models');
 const { response } = require('express');
+const {  generarReporte } = require('../helpers/reportes');
+const path = require('path');
 
 const obtenerPacientes = async(req, res = response ) => {
 
@@ -21,6 +25,21 @@ const obtenerPacientes = async(req, res = response ) => {
         pacientes
     });
 }
+const obtenerPacienteCita = async(req,res= response) =>{
+    const {id} = req.params;
+    let resultado = await Paciente.find().populate({path:"citas"}) ;
+    let filtrado = resultado.filter(p=>{return p.citas.filter(c=> {return c._id==id} ).length>0   })[0]
+    
+    let citax= filtrado.citas.filter(c=>{return c._id==id})
+    filtrado.citas= citax;
+    let out = await generarReporte(filtrado);
+
+    const enlace= path.join(__dirname,'../',"/uploads",'/consultas/',`${id}.pdf`);
+    await  out.stream.pipe(fs.createWriteStream(enlace) );
+
+    
+    res.json(filtrado);
+} 
 const obtenerPaciente = async(req, res = response ) => {
 
     const { id } = req.params;
@@ -89,6 +108,7 @@ const borrarPaciente = async(req, res = response ) => {
 module.exports = {
     obtenerPacientes,
     obtenerPaciente,
+    obtenerPacienteCita,
     crearPaciente,
     actualizarPaciente,
     borrarPaciente

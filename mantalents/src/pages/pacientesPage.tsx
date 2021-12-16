@@ -1,12 +1,12 @@
 import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider,
    DatePicker, Upload, Image, InputNumber } from "antd";
-   import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined } from '@ant-design/icons';
+   import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined, DownloadOutlined } from '@ant-design/icons';
    import { tableColumnTextFilterConfig } from "../helpers/tableUtils";
    import { Paciente, Cita } from "../interfaces/fetchPacientes";
    import { usePaciente } from "../hooks/usePaciente";
    import { useState } from "react";
    import moment, { Moment } from "moment";
-   import { getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
+   import { fetchPacienteCita, getFileCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
 
    const { TextArea } = Input;
 
@@ -230,7 +230,8 @@ export const PacientesPage= ( )=>{
         key: 'acciones',
         width: "10%" ,
         fixed:'right' as 'right',
-        render: ( record: Cita) => <Button type="primary" shape="circle" icon={ <EditOutlined/> } onClick=
+        render: ( record: Cita) => 
+        <><Button type="primary" shape="circle" icon={ <EditOutlined/> } onClick=
         { ()=>
           { 
               setadjunto(undefined);
@@ -256,7 +257,13 @@ export const PacientesPage= ( )=>{
               fechaproximaatencion: moment(new Date(record.fechaproximaatencion), "YYYY-MM-DD hh:mm:ss a"),
             });
           } 
-        }/>,
+        }/>
+        <Button type="primary" shape="circle" icon={ <DownloadOutlined /> } onClick={()=>{
+          fetchPacienteCita(record._id).then(respuesta=>{
+            window.open(`http://localhost/uploads/consultas/${record._id}.pdf`,'_blank');
+          })
+        }}/>
+        </>,
       },
 
     ]

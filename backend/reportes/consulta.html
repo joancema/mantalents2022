@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GVC Laboratry Result</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+        crossorigin="anonymous">
+    <style>
+        body {
+            margin-left:5%;
+            margin-right: 5%;
+            background-color: rgba(0,0,0,0);
+        }
+
+        .boldline {
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: center;
+        }
+
+        .header_lbl {
+            font-weight: bold;
+            color: black;
+        }
+
+        .header_val {
+            border-bottom: 1px solid black;
+            text-align: center;
+            display: block;
+        }
+        .unbreakable {
+            page-break-inside: avoid;
+        }
+
+        .hr {
+            border-bottom: solid;
+            height: 4px;
+            color: #333;
+        }
+
+        .body_box {
+            border: 1px solid black;
+        }
+
+        .sub_title {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="boldline">Cita de {{nombre}}</h2>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Rut:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{rut}}</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Nombre:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{nombre}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Dirección:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{direccion}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Teléfono:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{telefono}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hr"></div>
+
+
+    <br>
+    
+    <div class="row">
+        <div class="col-12">
+        
+        </div>
+    </div>
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>peso</th>
+                <th>Estatura</th>
+                <th>Temperatura</th>
+                <th>Presión arterial</th>
+                <th>IMC</th>
+                <th>Pulso</th>
+                <th>Hemo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each citas}}
+            <tr>
+                <td>{{peso}}</td>
+                <td>{{estatura}}</td>
+                <td>{{temperatura}}</td>
+                <td>{{presionalterial}}</td>
+                <td>{{imc}}</td>
+                <td>{{pulso}}</td>
+                <td>{{hemo}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+            <table class="table table-sm " >
+                <tbody >
+                    <tr>
+                        <td class="small">Correo electrónico</td><td class="small">{{email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

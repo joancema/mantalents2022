@@ -6,6 +6,10 @@ export const fetchpacientes = async (): Promise<Paciente[]> =>{
     const resp= await  cafeApi.get<FetchPacientes>('/pacientes');
     return resp.data.pacientes;
 }
+export const fetchPacienteCita = async (idcitax:string): Promise<Paciente> =>{
+    const resp = await cafeApi.get<Paciente>(`/pacientes/cita/${idcitax}`);
+    return resp.data;
+}
 export const postpaciente= async (paciente: Paciente): Promise<Paciente> =>{
     const token = localStorage.getItem('token') || '';
 

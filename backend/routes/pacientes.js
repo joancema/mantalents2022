@@ -4,7 +4,8 @@ const { check } = require('express-validator');
 const { validarJWT, validarCampos, esAdminRole } = require('../middlewares');
 
 const { 
-        obtenerPacientes, obtenerPaciente, crearPaciente, actualizarPaciente, borrarPaciente } = require('../controllers/pacientes');
+        obtenerPacientes, obtenerPaciente, obtenerPacienteCita, 
+        crearPaciente, actualizarPaciente, borrarPaciente } = require('../controllers/pacientes');
 
 
 const router = Router();
@@ -12,7 +13,7 @@ const router = Router();
 
 router.get('/', obtenerPacientes );
 
-
+router.get('/cita/:id', obtenerPacienteCita );
 
 router.get('/:id',[
     check('id', 'No es un id de Mongo válido').isMongoId(),

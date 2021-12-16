@@ -59,6 +59,7 @@ export const CalendarioPage= ()=>{
             name:ele.paciente.nombre,
             id:ele._id
           })
+          return true;
         })
         seteventlist(auxeventos);
       }
