@@ -502,7 +502,7 @@ export const PacientesPage= ( )=>{
           </Row>
         </Drawer>
         <Drawer
-          title="Consulta"
+          title={ "Consultas de: " + paciente.nombre  }
           width={720}
           height={650}
           onClose={()=>{ setcita(false); }}
