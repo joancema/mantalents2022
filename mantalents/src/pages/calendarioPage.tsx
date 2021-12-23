@@ -148,7 +148,25 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
         name:respuesta.paciente.nombre,
         id:respuesta._id
       }])
-      setCitasprevias([...citasprevias, respuesta ]);
+      if (values.id.length===0)
+      {
+        setCitasprevias([...citasprevias, respuesta ]);
+      }
+      else
+      {
+        setCitasprevias(citasprevias.map(ele=>{
+          if (ele._id=== values.id)
+            return {
+              ...ele,
+              motivo: values.motivo,
+              desde: values.desde.toDate(),
+              hasta: values.hasta.toDate() ,
+
+             };
+          else
+            return ele;
+        }) );
+      }
       message.success("Se almacenó correctamente la cita previa");
       setcitav(false);
     })
@@ -312,7 +330,7 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
           <Input />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16,  }}>
-          <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
+          <Button type="primary" htmlType="submit" icon={<SaveOutlined />} disabled={ !!(citaprevia.cita) } >
             Guardar cita
           </Button>
         </Form.Item>
@@ -364,8 +382,6 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
             {!citaprevia.cita ? "Generar consulta": "Mostrar consulta"}
           </Button>
         </Form.Item>
-        
-
       </Form>
   </Drawer>
   <ConsultaComponente paciente={paciente} citaactual={ cita2  } 
