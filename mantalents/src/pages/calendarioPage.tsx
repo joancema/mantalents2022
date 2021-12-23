@@ -14,7 +14,7 @@ import { ConsultaComponente } from '../components/consulta';
 import { postcita, postFileCita } from '../helpers/servicePacientes';
 import { Citasprevias, Citaspreviasplanas } from '../interfaces/fetchCitasPrevias';
 
-//TODO no sabemos
+//FIXME que al modificar una cita no se duplique.
   const  {TextArea} = Input;
   const { Option } = Select;
   const localizer = momentLocalizer(moment);

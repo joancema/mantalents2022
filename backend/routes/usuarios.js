@@ -50,7 +50,7 @@ router.delete('/:id',[
     validarCampos
 ],usuariosDelete );
 
-// TODO: Aquí
+
 router.get('/:id',[
     validarJWT,
     // esAdminRole,
