@@ -22,6 +22,12 @@ const CitapreviaSchema= new Schema({
         required: true,
         autopopulate: true
     },
+    cita: { 
+            type: Schema.Types.ObjectId,
+            ref: "Cita",
+            required: false,
+            autopopulate: true
+        }
 })
 
 

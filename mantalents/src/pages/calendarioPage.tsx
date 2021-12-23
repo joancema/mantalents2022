@@ -4,13 +4,17 @@ import { messages } from  '../helpers/calendarMessagesEs';
 import { CalendarEvent } from '../components/calendarEvent';
 import { useEffect, useState } from 'react';
 import { Button, Col, Drawer, Row, Form, DatePicker, Input, Select, message } from 'antd';
-import { PlusOutlined, SaveOutlined } from '@ant-design/icons';
+import { PlusOutlined, SaveOutlined, SolutionOutlined } from '@ant-design/icons';
 import moment, { Moment } from "moment";
-import { Paciente } from '../interfaces/fetchPacientes';
+import { Cita, Paciente } from '../interfaces/fetchPacientes';
 import { usePaciente } from "../hooks/usePaciente";
 import { useCitaprevia } from "../hooks/useCitaprevia";
 import { postcitaprevia } from '../helpers/serviceCitasprevias';
+import { ConsultaComponente } from '../components/consulta';
+import { postcita, postFileCita } from '../helpers/servicePacientes';
+import { Citasprevias, Citaspreviasplanas } from '../interfaces/fetchCitasPrevias';
 
+//TODO no sabemos
   const  {TextArea} = Input;
   const { Option } = Select;
   const localizer = momentLocalizer(moment);
@@ -40,9 +44,31 @@ interface ievento {
   id:string
 }
 export const CalendarioPage= ()=>{
+  const [adjunto, setadjunto] = useState<File>();
+
+  const cambiarAdjuntoBefore = (adjunto: File)=>{
+    setadjunto(adjunto);
+  }
+
   const [FormaCita] = Form.useForm();
-    const [cita, setcita] = useState(false);
+  const [FormaCitaf] = Form.useForm();
+    const [citav, setcitav] = useState(false);
+    const [citav2, setcitav2] = useState(false);
     const { citasprevias, setCitasprevias } = useCitaprevia();
+    
+    const [cita2] = useState<Cita>({ _id:"", imc:"", anamnesis:"", diagnostico:""
+  , estatura:"", fecha:new Date(), fechaproximaatencion:new Date(), medicamento:"", motivo:""
+, peso:"", presionalterial:"", pulso:"",saturacion:"", temperatura:"", tratamiento:"",
+hemo:""  })
+
+const [paciente,setpaciente] =  useState<Paciente>({
+  _id:"", alergia:"", email:"", fechanacimiento:new Date(),
+  nacionalidad:"", nombre:"", otrosdatos:"", previsionsalud:"",rut:"",sexo:"",
+  direccion:"", telefono:""
+});
+const [citaprevia, setCitaprevia]= useState<Citasprevias>({
+  _id:"", desde:new Date(), hasta:new Date(), motivo:"",paciente: paciente
+});
     
     const [eventlist, seteventlist] =  useState<ievento[]>([
     ]);
@@ -53,8 +79,9 @@ export const CalendarioPage= ()=>{
         citasprevias.map(ele=>{
           auxeventos.push({
             title:ele.motivo,
-            start: new Date(ele.desde.toString()) ,
-            end:   new Date(ele.hasta.toString()) ,
+            //
+            start: ele.desde ,
+            end:   ele.hasta ,
             bgcolor:"#fafafa",
             name:ele.paciente.nombre,
             id:ele._id
@@ -74,15 +101,22 @@ export const CalendarioPage= ()=>{
   }
   const onSelectEvent = (e:any)=>{
     let resultado =  citasprevias.find(p=>{return p._id=== e.id});
-    console.log(resultado)
-    setcita(true);
+    setcitav(true);
     FormaCita.setFieldsValue({
       id:resultado?._id ,
       motivo:resultado?.motivo ,
       paciente:resultado?.paciente._id,
-      desde: moment(resultado?.desde , "YYYY-MM-DD HH:mm"),
-      hasta:moment(resultado?.hasta , "YYYY-MM-DD HH:mm"),
-    })
+      
+      desde: moment(new Date(resultado?.desde!), "YYYY-MM-DD hh:mm:ss a"),
+      hasta: moment(new Date(resultado?.hasta!), "YYYY-MM-DD hh:mm:ss a"),
+    });
+    setpaciente({
+      _id:resultado?.paciente._id||"", alergia:"", email:"", fechanacimiento:new Date(),
+      nacionalidad:"", nombre:"", otrosdatos:"", previsionsalud:"",rut:"",sexo:"",
+      direccion:"", telefono:""
+    });
+    
+    setCitaprevia(resultado! );
   }
   const onViewChange = (e:any)=>{
     setlastview(e);
@@ -90,7 +124,7 @@ export const CalendarioPage= ()=>{
   }
   const agregarEvento= ()=>{
 
-    setcita(true);
+    setcitav(true);
     FormaCita.setFieldsValue({
       id:"",
       motivo:"",
@@ -102,8 +136,9 @@ export const CalendarioPage= ()=>{
       
   }
   const onFinishCita = async (values:{id:string, desde:Moment, hasta:Moment, motivo:string , paciente: string })=>{
-    //console.log({...values, _id: values.id, desde: values.desde.toDate(), hasta: values.hasta.toDate()  })
-    postcitaprevia({...values, _id: values.id, desde: values.desde.toDate(), hasta: values.hasta.toDate()  })
+    
+    postcitaprevia({...values, _id: values.id, desde: new Date(values.desde.toDate().toISOString() ),
+       hasta: new Date(values.hasta.toDate().toISOString() )  })
     .then(respuesta=>{
       seteventlist([...eventlist, {
         title:respuesta.motivo ,
@@ -115,8 +150,54 @@ export const CalendarioPage= ()=>{
       }])
       setCitasprevias([...citasprevias, respuesta ]);
       message.success("Se almacenó correctamente la cita previa");
-      setcita(false);
+      setcitav(false);
     })
+  }
+  const onFinishConsulta =async (values: {peso:string, estatura:string, temperatura:string, 
+    presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
+  anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
+  saturacion:string,
+  fechaproximaatencion:Moment})=>
+  {
+    const citax = {
+      _id: citaprevia.cita?citaprevia.cita!._id:"",
+      peso: values.peso,
+      estatura: values.estatura,
+      temperatura: values.temperatura,
+      presionalterial: values.presionalterial,
+      imc: values.imc,
+      pulso: values.pulso,
+      hemo: values.hemo,
+      fecha:  new Date(values.fecha.toDate().toISOString() ),
+      anamnesis: values.anamnesis,
+      diagnostico: values.diagnostico,
+      tratamiento: values.tratamiento,
+      medicamento: values.medicamento,
+      motivo:values.motivo,
+      saturacion: values.saturacion,
+      fechaproximaatencion: new Date(values.fechaproximaatencion.toISOString() ),
+    };
+    let respuesta:Cita =  await postcita({...citax}, paciente._id );
+    let respuestaConAdjunto:Cita = { ...respuesta };
+    if (adjunto)
+    {
+      respuestaConAdjunto= await postFileCita(respuesta._id , adjunto! );
+      message.success(`Consulta realizada en fecha ${respuestaConAdjunto.fecha.toString() } ahora tiene adjunto`)
+    }
+    const citap: Citaspreviasplanas={
+      _id: FormaCita.getFieldValue("id") ,
+      cita: respuestaConAdjunto._id ,
+      desde:FormaCita.getFieldValue("desde").toDate() ,
+      hasta: FormaCita.getFieldValue("hasta").toDate(),
+      motivo:FormaCita.getFieldValue("motivo"),
+      paciente: FormaCita.getFieldValue("paciente") ,
+    } 
+    //console.log(citap)
+    await postcitaprevia(citap);
+    message.success("Se almacenó correctamente la consulta");
+    setcitav2(false);
+
+
   }
   const cambiaDesde=(valor:Moment|null)=>{
     if (valor)
@@ -169,8 +250,8 @@ export const CalendarioPage= ()=>{
     title="Cita"
     width={720}
     height={500}
-    onClose={()=>{ setcita(false); }}
-    visible={cita}
+    onClose={()=>{ setcitav(false); }}
+    visible={citav}
     bodyStyle={{ paddingBottom: 60 }}
     placement="bottom"
   >
@@ -227,13 +308,69 @@ export const CalendarioPage= ()=>{
         <Form.Item label="ID" name="id" hidden={true}>
           <Input />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item label="cita" name="idcita" hidden={true}>
+          <Input />
+        </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16,  }}>
           <Button type="primary" htmlType="submit" icon={<SaveOutlined />}>
             Guardar cita
           </Button>
         </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16,  }}>
+          <Button type="primary" htmlType="button"  icon={<SolutionOutlined />} onClick={()=>{
+            
+            setcitav2(true);
+            if (citaprevia.cita)
+            {
+              FormaCitaf.setFieldsValue({
+                fecha: moment(new Date(citaprevia.cita.fecha), "YYYY-MM-DD hh:mm:ss a"),
+                fechaproximaatencion: moment(new Date(citaprevia.cita.fechaproximaatencion ), "YYYY-MM-DD hh:mm:ss a"),
+                motivo: citaprevia.cita.motivo ,
+                anamnesis: citaprevia.cita.anamnesis ,
+                presionalterial: citaprevia.cita.presionalterial ,
+                pulso:  citaprevia.cita.presionalterial,
+                estatura: citaprevia.cita.estatura ,
+                peso: citaprevia.cita.peso,
+                imc: citaprevia.cita.imc ,
+                temperatura: citaprevia.cita.temperatura,
+                hemo: citaprevia.cita.hemo,
+                medicamento: citaprevia.cita.medicamento ,
+                diagnostico:citaprevia.cita.diagnostico,
+                tratamiento: citaprevia.cita.tratamiento ,
+                saturacion: citaprevia.cita.saturacion
+              })
+            }
+            else
+            {
+              FormaCitaf.setFieldsValue({
+                fecha: moment(new Date() , "YYYY-MM-DD"),
+                fechaproximaatencion: moment(new Date() , "YYYY-MM-DD"),
+                motivo:"",
+                anamnesis:"",
+                presionalterial:"",
+                pulso:"",
+                estatura:"",
+                peso:"",
+                imc:"",
+                temperatura:"",
+                hemo:"",
+                medicamento:"",
+                diagnostico:"",
+                tratamiento:"",
+                saturacion:""
+              })
+            }
+          }} >
+            {!citaprevia.cita ? "Generar consulta": "Mostrar consulta"}
+          </Button>
+        </Form.Item>
+        
+
       </Form>
   </Drawer>
+  <ConsultaComponente paciente={paciente} citaactual={ cita2  } 
+        cita={citav2} setcita={ setcitav2 } FormaCita={ FormaCitaf } 
+        onFinishCita={ onFinishConsulta } cambiarAdjuntoBefore={cambiarAdjuntoBefore}  />
   </>
   )
 }

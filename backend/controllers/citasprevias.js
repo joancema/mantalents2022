@@ -12,6 +12,7 @@ const obtenerCitasprevias = async(req, res = response ) => {
         Citaprevia.find(query)
             .populate('usuario', 'nombre')
             .populate('paciente', 'nombre')
+            .populate('cita')
             .skip( Number( desde ) )
             //.limit(Number( limite ))
     ]);
@@ -27,7 +28,8 @@ const obtenerCitaprevia = async(req, res = response ) => {
     const { id } = req.params;
     const citaprevia = await Citaprevia.findById( id )
                             .populate('usuario', 'nombre')
-                            .populate('paciente', 'nombre');
+                            .populate('paciente', 'nombre')
+                            .populate('cita');
 
     res.json( citaprevia );
 
@@ -52,6 +54,7 @@ const crearCitaprevia = async(req, res = response ) => {
     await nuevaCitaprevia
         .populate('usuario', 'nombre')
         .populate('paciente', 'nombre')
+        .populate('cita')
         .execPopulate();
 
     res.status(201).json( nuevaCitaprevia );
@@ -71,6 +74,7 @@ const actualizarCitaprevia = async( req, res = response ) => {
     await citaprevia
         .populate('usuario', 'nombre')
         .populate('paciente', 'nombre')
+        .populate('cita')
         .execPopulate();
         
     res.json( citaprevia );

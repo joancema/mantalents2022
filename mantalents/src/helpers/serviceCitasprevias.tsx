@@ -4,7 +4,6 @@ import { Citasprevias, Citaspreviasplanas, FetchCitasprevias } from "../interfac
 
 export const fetchcitasprevias = async (): Promise<Citasprevias[]> =>{
     const resp= await  cafeApi.get<FetchCitasprevias>('/citasprevias');
-    console.log(resp.data.citasprevias)
     return resp.data.citasprevias;
 }
 export const postcitaprevia= async (citaprevia: Citaspreviasplanas): Promise<Citasprevias> =>{
