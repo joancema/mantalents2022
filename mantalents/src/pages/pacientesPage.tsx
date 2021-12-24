@@ -393,11 +393,12 @@ export const PacientesPage= ( )=>{
                       />
                     </Form.Item>
                     }
-              <Form.Item label="Nro. Identificación" style={{ marginBottom: 0 }}>
+              <Form.Item  style={{ marginBottom: 0 }}  label="Nro. Identificación">
                 <Form.Item
                   name="rut"
+                  rules={[{ required: true, message: 'Por favor ingrese el RUT' }]}
                   style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
-                  rules={[{ required: true, message: 'Por favor ingrese el RUT' }]}>
+                  >
                   <Input style={{width:"80%", display:"inline-block" }} placeholder="RUT:(Ej. 12345678-9)" />
                 </Form.Item>
                 <span
@@ -410,7 +411,7 @@ export const PacientesPage= ( )=>{
                   label="Nombre Completo"
                   name="nombre"
                   rules={[{ required: true, message: 'Por favor ingrese el Nombre' }]}>
-                  <Input style={{ width:"70%", textTransform: 'uppercase' }} placeholder="APELLIDOS PRIMEROS" />
+                  <Input style={{ width:"70%", textTransform: 'uppercase' }} placeholder="ESCRIBIR APELLIDOS LUEGO NOMBRES" />
                 </Form.Item>
                 <Form.Item label="Fecha de Nacimiento"
                  name="fechanacimiento"
@@ -470,7 +471,7 @@ export const PacientesPage= ( )=>{
                 </Form.Item>
                 
                 <Form.Item
-                  label="Otros datos"
+                  label="Otros Datos"
                   name="otrosdatos">
                   <TextArea style={{width:"80%", textTransform: 'uppercase'}} />
                 </Form.Item>

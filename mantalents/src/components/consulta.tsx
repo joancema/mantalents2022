@@ -49,7 +49,7 @@ return (
                     />
                   </Form.Item>
                   <Form.Item
-                    label="Motivo de la consulta"
+                    label="Motivo de la Consulta"
                     name="motivo"
                     rules={[{ required: true, message: 'Por favor ingrese motivo de la consulta' }]}>
                     <Input />
@@ -85,7 +85,7 @@ return (
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    label="I.M.C."
+                    label="IMC"
                     name="imc"
                     rules={[{ required: true, message: 'Por favor ingrese IMC' }]}>
                     <Input />
@@ -105,12 +105,12 @@ return (
                   </Col>
                   <Col xs={2} sm={4} md={6} lg={8} xl={10}>
                   <Form.Item
-                    label="Saturación de oxígeno"
+                    label="Saturación de Oxígeno"
                     name="saturacion">
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    label="Examen físico"
+                    label="Examen Físico"
                     name="medicamento"
                     rules={[{ required: true, message: 'Por favor ingrese medicamento' }]}>
                     <TextArea />
@@ -127,7 +127,7 @@ return (
                     rules={[{ required: true, message: 'Por favor ingrese tratamiento' }]}>
                     <TextArea />
                   </Form.Item>
-                  <Form.Item label="Próxima atención" name="fechaproximaatencion">
+                  <Form.Item label="Próxima Atención" name="fechaproximaatencion">
                     <DatePicker 
                     showTime={{ format: 'HH:mm' }}
                     format="YYYY-MM-DD HH:mm"
