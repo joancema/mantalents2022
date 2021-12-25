@@ -10,7 +10,7 @@ import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider,
    import { Document, Page } from 'react-pdf';
    import { pdfjs } from 'react-pdf';
 
-   import { fetchDescargar, fetchPacienteCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
+   import { fetchDescargar, fetchPacienteCita, getFilePaciente, obtenerEnlace, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
    import { ConsultaComponente } from "../components/consulta";
 
    const { TextArea } = Input;
@@ -279,7 +279,8 @@ export const PacientesPage= ( )=>{
         
         <Button type="primary" shape="circle" icon={ <EyeOutlined /> } onClick={()=>{
           fetchPacienteCita(record._id).then(respuesta=>{
-            setreportepdf(`http://localhost/uploads/consultas/${record._id}.pdf`);
+            setreportepdf(`${obtenerEnlace()}uploads/consultas/${record._id}.pdf`);
+            
             setvisor(true);            
           })
         }}/>

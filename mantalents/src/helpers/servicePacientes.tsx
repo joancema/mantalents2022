@@ -10,6 +10,9 @@ export const fetchPacienteCita = async (idcitax:string): Promise<Paciente> =>{
     const resp = await cafeApi.get<Paciente>(`/pacientes/cita/${idcitax}`);
     return resp.data;
 }
+export const obtenerEnlace= ():string=>{
+    return cafeApi.defaults.baseURL!.replace('api','');
+}
 export const fetchDescargar=async (idx:string) : Promise<any> =>{
     const basej= (cafeApi.defaults.baseURL?.replace('api','') );
     const resp =  await cafeApi.get<any>(`${basej}uploads/consultas/${idx}.pdf`, {responseType:'blob'});
