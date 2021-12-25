@@ -1,17 +1,25 @@
 import { Table, Drawer, Button, Form, Input, message, Row, Col, Divider,
    DatePicker, Upload, Image, InputNumber } from "antd";
-   import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined, DownloadOutlined } from '@ant-design/icons';
+   import { SaveOutlined, PlusOutlined, EditOutlined, UploadOutlined, DownloadOutlined, EyeOutlined } from '@ant-design/icons';
    import { tableColumnTextFilterConfig } from "../helpers/tableUtils";
    import { Paciente, Cita } from "../interfaces/fetchPacientes";
    import { usePaciente } from "../hooks/usePaciente";
    import { useState } from "react";
    import moment, { Moment } from "moment";
+
+   import { Document, Page } from 'react-pdf';
+   import { pdfjs } from 'react-pdf';
+
    import { fetchDescargar, fetchPacienteCita, getFilePaciente, postcita, postFileCita, postFilePaciente, postpaciente } from "../helpers/servicePacientes";
-import { ConsultaComponente } from "../components/consulta";
+   import { ConsultaComponente } from "../components/consulta";
 
    const { TextArea } = Input;
 
 export const PacientesPage= ( )=>{
+  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+  function onDocumentLoadSuccess() {
+    
+  }
   const devolverEdad=(parametro:Moment|null )=>{
     const fechaActual= new Date();
     let edadActual= (fechaActual.getFullYear()- (parametro?.year()??0)   )
@@ -25,7 +33,7 @@ export const PacientesPage= ( )=>{
   const cambiarAdjuntoBefore = (adjunto: File)=>{
     setadjunto(adjunto);
   }
-    const crearPaciente=()=>{
+  const crearPaciente=()=>{
       setarchivo(undefined);
       Forma.resetFields();
       setformulario(true);
@@ -48,8 +56,8 @@ export const PacientesPage= ( )=>{
         otrosdatos:"",
         estadocivil:"",
       })
-    }
-    const crearCita=()=>{
+  }
+  const crearCita=()=>{
       setadjunto(undefined);
       FormaCita.resetFields();
       setidcita("");
@@ -76,7 +84,7 @@ export const PacientesPage= ( )=>{
       });
       
 
-    }
+  }
     const [Forma] = Form.useForm();
     const [FormaCita] = Form.useForm();
     const { pacientes, setPacientes, isLoading, citas, setCitas } = usePaciente();
@@ -92,7 +100,9 @@ export const PacientesPage= ( )=>{
       });
       const [formulario, setformulario] = useState(false);
       const [cita, setcita] = useState(false);
+      const [visor, setvisor] = useState(false);
       const [idcita, setidcita]= useState<string>("");
+      const [reportepdf, setreportepdf]= useState<string>("http://localhost/uploads/consultas/61ad47a7684b9b03d15a1a2d.pdf");
     const onFinishCita = async (values: {peso:string, estatura:string, temperatura:string, 
       presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
     anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
@@ -265,6 +275,14 @@ export const PacientesPage= ( )=>{
             fetchDescargar(record._id)
           })
         }}/>
+        
+        <Button type="primary" shape="circle" icon={ <EyeOutlined /> } onClick={()=>{
+          fetchPacienteCita(record._id).then(respuesta=>{
+            setreportepdf(`http://localhost/uploads/consultas/${record._id}.pdf`);
+            setvisor(true);            
+          })
+        }}/>
+
         </>,
       },
 
@@ -506,6 +524,20 @@ export const PacientesPage= ( )=>{
         <ConsultaComponente paciente={paciente} citaactual={ citaactual  } 
         cita={cita} setcita={ setcita } FormaCita={ FormaCita } 
         onFinishCita={ onFinishCita } cambiarAdjuntoBefore={cambiarAdjuntoBefore}  />
+        <Drawer
+          title="Reporte"
+          width={720}
+          height={650}
+          onClose={()=>{ setvisor(false); }}
+          visible={visor}
+          bodyStyle={{ paddingBottom: 60 }}
+          placement="bottom">
+            <Document
+            file={reportepdf}
+            onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={1} />
+            </Document>
+        </Drawer>
         
         </>
     )
