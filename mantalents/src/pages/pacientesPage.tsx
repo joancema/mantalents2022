@@ -42,6 +42,7 @@ export const PacientesPage= ( )=>{
     , email:"", previsionsalud:"", otrosdatos:"", estadocivil:"" });
     setCitas([]);
       Forma.setFieldsValue({
+        nosenada:"prueba",
         rut:"",
         nombre: "",
         direccion:"",
@@ -334,6 +335,7 @@ export const PacientesPage= ( )=>{
               Forma.resetFields();
               setCitas(record.citas!);
               Forma.setFieldsValue({
+                nosenada:"prueba",
                 rut: record.rut,
                 nombre: record.nombre,
                 direccion: record.direccion,
@@ -411,13 +413,16 @@ export const PacientesPage= ( )=>{
                       />
                     </Form.Item>
                     }
-              <Form.Item  style={{ marginBottom: 0 }}  label="Nro. Identificación">
+              <Form.Item  style={{ marginBottom: 0 }}  label="Nro. Identificación"
+              name="nosenada"
+              rules={[{ required: true, message:'Datos no ingresados' }]}
+              >
                 <Form.Item
                   name="rut"
                   rules={[{ required: true, message: 'Por favor ingrese el RUT' }]}
-                  style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
+                  style={{  width: 'calc(50% - 12px)', display:"inline-block" }}
                   >
-                  <Input style={{width:"80%", display:"inline-block" }} placeholder="RUT:(Ej. 12345678-9)" />
+                  <Input style={{width:"90%",  }} placeholder="RUT:(Ej. 12345678-9)" />
                 </Form.Item>
                 <span
                   style={{ display: 'inline-block', width: '200px', lineHeight: '32px', textAlign: 'left' }}
@@ -443,7 +448,7 @@ export const PacientesPage= ( )=>{
                   label="Sexo"
                   name="sexo"
                   rules={[{ required: true, message: 'Por favor ingrese el sexo del paciente' }]}>
-                  <Input style={{width:"10%", textTransform: 'capitalize'}} />
+                  <Input style={{width:"20%", textTransform: 'capitalize'}} />
                 </Form.Item>
                 <Form.Item
                   label="Estado Civil"
