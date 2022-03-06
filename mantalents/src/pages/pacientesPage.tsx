@@ -446,7 +446,7 @@ export const PacientesPage= ( )=>{
                   <InputNumber />
                 </Form.Item>
                 <Form.Item
-                  label="Sexo"
+                  label="Género"
                   name="sexo"
                   rules={[{ required: true, message: 'Por favor ingrese el sexo del paciente' }]}>
                   <Input style={{width:"20%", textTransform: 'capitalize'}} />
@@ -457,7 +457,7 @@ export const PacientesPage= ( )=>{
                   <Input style={{width:"20%", textTransform:"capitalize"}} />
                 </Form.Item>
                 <Form.Item
-                  label="Provisión de Salud"
+                  label="Previsión de Salud"
                   name="previsionsalud">
                   <TextArea style={{width:"80%", textTransform: 'uppercase'}} />
                 </Form.Item>
@@ -478,7 +478,7 @@ export const PacientesPage= ( )=>{
                   <TextArea style={{width:"80%"}} />
                 </Form.Item>
                 <Form.Item
-                  label="Teléfono"
+                  label="Teléfonos"
                   name="telefono"
                   rules={[{ required: true, message: 'Por favor ingrese teléfono' }]}>
                   <TextArea style={{width:"50%"}} />
@@ -489,7 +489,7 @@ export const PacientesPage= ( )=>{
                   <Input style={{width:"50%", textTransform:'capitalize'}}  />
                 </Form.Item>
                 <Form.Item
-                  label="Alergia"
+                  label="Alergias"
                   name="alergia">
                   <TextArea style={{width:"80%", textTransform: 'uppercase', color:"red"  }} />
                 </Form.Item>

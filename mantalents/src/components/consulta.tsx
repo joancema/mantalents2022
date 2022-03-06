@@ -49,74 +49,89 @@ return (
                     />
                   </Form.Item>
                   <Form.Item
-                    label="Motivo de la Consulta"
+                    label="Motivo de Consulta"
                     name="motivo"
                     rules={[{ required: true, message: 'Por favor ingrese motivo de la consulta' }]}>
                     <Input />
                   </Form.Item>
+                  
+                  <Form.Item
+                    label="P/A"
+                    name="presionalterial"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="FC"
+                    name="pulso"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Estatura"
+                    name="estatura"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Peso"
+                    name="peso"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="IMC"
+                    name="imc"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="T"
+                    name="temperatura"
+                    
+                    >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="HGT"
+                    name="hemo">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="SpO2"
+                    name="saturacion">
+                    <Input />
+                  </Form.Item>
+                  
+                  </Col>
+                  <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+                  
                   <Form.Item
                     label="Anamnesis"
                     name="anamnesis"
                     rules={[{ required: true, message: 'Por favor ingrese anamnesis' }]}>
                     <TextArea />
                   </Form.Item>
-                  <Form.Item
-                    label="Presión Arterial"
-                    name="presionalterial"
-                    rules={[{ required: true, message: 'Por favor ingrese presión alterial' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Pulso"
-                    name="pulso"
-                    rules={[{ required: true, message: 'Por favor ingrese pulso' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Estatura"
-                    name="estatura"
-                    rules={[{ required: true, message: 'Por favor ingrese estatura' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Peso"
-                    name="peso"
-                    rules={[{ required: true, message: 'Por favor ingrese peso' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="IMC"
-                    name="imc"
-                    rules={[{ required: true, message: 'Por favor ingrese IMC' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Temperatura"
-                    name="temperatura"
-                    rules={[{ required: true, message: 'Por favor ingrese temperatura' }]}>
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Hemoglucotest"
-                    name="hemo">
-                    <Input />
-                  </Form.Item>
-                  
-                  </Col>
-                  <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-                  <Form.Item
-                    label="Saturación de Oxígeno"
-                    name="saturacion">
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
+                  {
+                    /**
+                     * 
+                     * <Form.Item
                     label="Examen Físico"
                     name="medicamento"
                     rules={[{ required: true, message: 'Por favor ingrese medicamento' }]}>
                     <TextArea />
-                  </Form.Item>
+                    </Form.Item>
+                     * 
+                     */
+                  }
+                  
                   <Form.Item
-                    label="Diagnóstico"
+                    label="Diagnósticos"
                     name="diagnostico"
                     rules={[{ required: true, message: 'Por favor ingrese diagnóstico' }]}>
                     <TextArea />

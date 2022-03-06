@@ -14,7 +14,8 @@ import { ConsultaComponente } from '../components/consulta';
 import { postcita, postFileCita } from '../helpers/servicePacientes';
 import { Citasprevias, Citaspreviasplanas } from '../interfaces/fetchCitasPrevias';
 
-//FIXME que al modificar una cita no se duplique.
+//TODO: PRUEBA
+//FIXME: PRUEBA
   const  {TextArea} = Input;
   const { Option } = Select;
   const localizer = momentLocalizer(moment);
@@ -215,7 +216,16 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
     message.success("Se almacenó correctamente la consulta");
     setcitav2(false);
 
-
+    setCitasprevias(citasprevias.map(ele=>{
+      if (ele._id=== FormaCita.getFieldValue("id") )
+        return {
+          ...ele,
+          cita: respuestaConAdjunto
+         };
+      else
+        return ele;
+    }) );
+    console.log(citasprevias)
   }
   const cambiaDesde=(valor:Moment|null)=>{
     if (valor)
