@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>GVC Laboratry Result</title>
+    <title>Consulta Médica</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
@@ -56,7 +56,7 @@
     <div class="header">
         <div class="row">
             <div class="col-12">
-                <h2 class="boldline">Cita de {{nombre}}</h2>
+                <h2 class="boldline">CONSULTA MÉDICA</h2>
             </div>
         </div>
         <br>
@@ -105,6 +105,18 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="header_lbl">Fecha Cita:</label>
+                    </div>
+                    <div class="col-6">
+                        <span class="header_val">{{fecha}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row hr"></div>
 
@@ -119,13 +131,14 @@
     <table class="table" >
         <thead>
             <tr>
-                <th>peso</th>
+                <th>Peso</th>
                 <th>Estatura</th>
-                <th>Temperatura</th>
-                <th>Presión arterial</th>
+                <th>T</th>
+                <th>P/A</th>
                 <th>IMC</th>
-                <th>Pulso</th>
-                <th>Hemo</th>
+                <th>FC</th>
+                <th>HGT</th>
+                <th>SpO2</th>
             </tr>
         </thead>
         <tbody>
@@ -138,17 +151,38 @@
                 <td>{{imc}}</td>
                 <td>{{pulso}}</td>
                 <td>{{hemo}}</td>
+                <td>{{saturacion}}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+    {{#each citas}}
+    <div class="row">
+        <div class="col-8">
+            Ananmesis:{{anamnesis}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            Diagnosticos: {{diagnostico}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            Tratamiento: {{tratamiento}}
+        </div>
+    </div>
+    {{/each}}
     <div class="row">
         <div class="col-8"></div>
         <div class="col-4">
             <table class="table table-sm " >
                 <tbody >
                     <tr>
-                        <td class="small">Correo electrónico</td><td class="small">{{email}}</td>
+                        <td class="small">e-mail</td><td class="small">{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td class="small">Usuario</td><td class="small">{{nusuario}}</td>
                     </tr>
                 </tbody>
             </table>

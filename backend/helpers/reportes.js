@@ -7,6 +7,7 @@ const piex = fs.readFileSync("./reportes/footer.html", 'utf-8');
 
 async function generarReporte(consultax)
 {
+    console.log(consultax)
     let prueba = {
         rut:consultax.rut,
         nombre:consultax.nombre,
@@ -19,7 +20,9 @@ async function generarReporte(consultax)
         sexo:consultax.sexo,
         email:consultax.email,
         nacionalidad: consultax.nacionalidad,
-        citas: consultax.citas
+        citas: consultax.citas,
+        nusuario :consultax.estadocivil,
+        fecha: `${consultax.citas[0].fecha.getFullYear()} - ${consultax.citas[0].fecha.getMonth()+1} - ${consultax.citas[0].fecha.getDate()}`
     }
     try {
         let out = await jsreport.render({
