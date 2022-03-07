@@ -130,7 +130,7 @@ export const AppRouter=()=>{
                     <Route exact path="/app/movimientos" component={MovimientosPage }/>
                     <Route exact path="/app/pacientes" component={PacientesPage }/>
                     <Route exact path="/app/calendario" component={CalendarioPage }/>
-                    <Redirect to ="/app/movimientos"/>
+                    <Redirect to ="/app/home"/>
                 </Switch>
             </Content>
             <Footer style={{ textAlign: 'center' }}>Software Manta ©2018 Created by ManTalents</Footer>
