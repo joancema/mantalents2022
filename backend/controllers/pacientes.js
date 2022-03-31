@@ -39,8 +39,10 @@ const obtenerPacienteCita = async(req,res= response) =>{
 
     filtrado.citas= citax;
     filtrado.estadocivil=filtroUsuario[0].nombre;
+    filtrado.email=filtroUsuario[0].correo;
 
     //console.log(filtrado);
+    //console.log(filtroUsuario[0])
     let out = await generarReporte(filtrado);
 
     const enlace= path.join(__dirname,'../',"/uploads",'/consultas/',`${id}.pdf`);

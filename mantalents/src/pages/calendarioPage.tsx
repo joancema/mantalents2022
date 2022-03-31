@@ -60,7 +60,7 @@ export const CalendarioPage= ()=>{
     const [cita2] = useState<Cita>({ _id:"", imc:"", anamnesis:"", diagnostico:""
   , estatura:"", fecha:new Date(), fechaproximaatencion:new Date(), medicamento:"", motivo:""
 , peso:"", presionalterial:"", pulso:"",saturacion:"", temperatura:"", tratamiento:"",
-hemo:""  })
+hemo:"", frecuenciarespiratoria:""  })
 
 const [paciente,setpaciente] =  useState<Paciente>({
   _id:"", alergia:"", email:"", fechanacimiento:new Date(),
@@ -175,13 +175,14 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
   const onFinishConsulta =async (values: {peso:string, estatura:string, temperatura:string, 
     presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
   anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
-  saturacion:string,
+  saturacion:string, frecuenciarespiratoria:string,
   fechaproximaatencion:Moment})=>
   {
     const citax = {
       _id: citaprevia.cita?citaprevia.cita!._id:"",
       peso: values.peso,
       estatura: values.estatura,
+      frecuenciarespiratoria: values.frecuenciarespiratoria,
       temperatura: values.temperatura,
       presionalterial: values.presionalterial,
       imc: values.imc,

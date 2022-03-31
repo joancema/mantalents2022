@@ -25,26 +25,27 @@ export interface Paciente {
 }
 
 export interface Cita {
-    estado?:               boolean;
-    _id:                  string;
-    estatura:             string;
-    peso:                 string;
-    temperatura:          string;
-    presionalterial:      string;
-    imc:                  string;
-    pulso:                string;
-    hemo:                 string;
-    fecha:                Date;
-    anamnesis:            string;
-    diagnostico:          string;
-    tratamiento:          string;
-    medicamento:          string;
-    fechaproximaatencion:  Date;
-    motivo:                string;
-    saturacion:            string;
-    usuario?:              string;
-    img?:                  string;
-    __v?:                  number;
+    estado?:                boolean;
+    estatura:               string;
+    _id:                    string;
+    peso:                   string;
+    temperatura:            string;
+    presionalterial:        string;
+    imc:                    string;
+    pulso:                  string;
+    frecuenciarespiratoria: string;
+    hemo:                   string;
+    fecha:                  Date;
+    anamnesis:              string;
+    diagnostico:            string;
+    tratamiento:            string;
+    medicamento:            string;
+    fechaproximaatencion:   Date;
+    motivo:                 string;
+    saturacion:             string;
+    usuario?:               string;
+    img?:                   string;
+    __v?:                   number;
 }
 
 export interface Usuario {

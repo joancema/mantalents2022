@@ -7,7 +7,7 @@ const piex = fs.readFileSync("./reportes/footer.html", 'utf-8');
 
 async function generarReporte(consultax)
 {
-    console.log(consultax)
+    //console.log(consultax)
     let prueba = {
         rut:consultax.rut,
         nombre:consultax.nombre,

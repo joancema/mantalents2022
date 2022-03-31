@@ -41,12 +41,11 @@ return (
                 onFinishFailed={()=>{}}
                 autoComplete="off">
                   <Row>
-                  <Col xs={2} sm={4} md={6} lg={8} xl={12}>
+                  <Col xs={2} sm={4} md={6} lg={8} xl={8}>
                   <Form.Item label="Fecha" name="fecha">
                     <DatePicker 
                     showTime={{ format: 'HH:mm' }}
-                    format="YYYY-MM-DD HH:mm"
-                    />
+                    format="YYYY-MM-DD HH:mm"/>
                   </Form.Item>
                   <Form.Item
                     label="Motivo de Consulta"
@@ -54,52 +53,19 @@ return (
                     rules={[{ required: true, message: 'Por favor ingrese motivo de la consulta' }]}>
                     <Input />
                   </Form.Item>
-                  
                   <Form.Item
-                    label="P/A"
-                    name="presionalterial"
-                    
-                    >
+                    label="PA"
+                    name="presionalterial">
                     <Input />
                   </Form.Item>
                   <Form.Item
                     label="FC"
-                    name="pulso"
-                    
-                    >
+                    name="pulso">
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    label="Estatura"
-                    name="estatura"
-                    
-                    >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="Peso"
-                    name="peso"
-                    
-                    >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="IMC"
-                    name="imc"
-                    
-                    >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="T"
-                    name="temperatura"
-                    
-                    >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    label="HGT"
-                    name="hemo">
+                    label="FR"
+                    name="frecuenciarespiratoria">
                     <Input />
                   </Form.Item>
                   <Form.Item
@@ -107,15 +73,41 @@ return (
                     name="saturacion">
                     <Input />
                   </Form.Item>
-                  
+                  <Form.Item
+                    label="T°"
+                    name="temperatura">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Peso"
+                    name="peso">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Estatura"
+                    name="estatura">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="IMC"
+                    name="imc">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="HGT"
+                    name="hemo">
+                    <Input />
+                  </Form.Item>
                   </Col>
-                  <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+                  <Col xs={2} sm={4} md={6} lg={8} xl={14}>
                   
                   <Form.Item
                     label="Anamnesis"
                     name="anamnesis"
                     rules={[{ required: true, message: 'Por favor ingrese anamnesis' }]}>
-                    <TextArea />
+                    <TextArea 
+                    autoSize={{ minRows: 2, maxRows: 20 }}
+                    />
                   </Form.Item>
                   {
                     /**
@@ -134,13 +126,17 @@ return (
                     label="Diagnósticos"
                     name="diagnostico"
                     rules={[{ required: true, message: 'Por favor ingrese diagnóstico' }]}>
-                    <TextArea />
+                    <TextArea
+                    autoSize={{ minRows: 2, maxRows: 20 }}
+                    />
                   </Form.Item>
                   <Form.Item
                     label="Tratamiento"
                     name="tratamiento"
                     rules={[{ required: true, message: 'Por favor ingrese tratamiento' }]}>
-                    <TextArea />
+                    <TextArea
+                    autoSize={{ minRows: 2, maxRows: 20 }}
+                     />
                   </Form.Item>
                   <Form.Item label="Próxima Atención" name="fechaproximaatencion">
                     <DatePicker 

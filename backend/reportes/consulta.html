@@ -158,19 +158,22 @@
     </table>
     {{#each citas}}
     <div class="row">
-        <div class="col-8">
-            Ananmesis:{{anamnesis}}
+        <div class="col-8" style="font-weight: bold;">
+            Ananmesis:
         </div>
+        <span class="col-8" style="white-space: pre-line">{{anamnesis}}</span>
     </div>
     <div class="row">
-        <div class="col-8">
-            Diagnosticos: {{diagnostico}}
+        <div class="col-8" style="font-weight: bold;">
+            Diagnosticos:
         </div>
+        <span class="col-8" style="white-space: pre-line">{{diagnostico}}</span>
     </div>
     <div class="row">
-        <div class="col-8">
-            Tratamiento: {{tratamiento}}
+        <div class="col-8" style="font-weight: bold;">
+            Tratamiento: 
         </div>
+        <span class="col-8" style="white-space: pre-line">{{tratamiento}}</span>
     </div>
     {{/each}}
     <div class="row">
