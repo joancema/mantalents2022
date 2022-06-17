@@ -14,7 +14,8 @@ import { ConsultaComponente } from '../components/consulta';
 import { postcita, postFileCita } from '../helpers/servicePacientes';
 import { Citasprevias, Citaspreviasplanas } from '../interfaces/fetchCitasPrevias';
 
-//FIXME que al modificar una cita no se duplique.
+//TODO: PRUEBA
+//FIXME: PRUEBA
   const  {TextArea} = Input;
   const { Option } = Select;
   const localizer = momentLocalizer(moment);
@@ -59,7 +60,7 @@ export const CalendarioPage= ()=>{
     const [cita2] = useState<Cita>({ _id:"", imc:"", anamnesis:"", diagnostico:""
   , estatura:"", fecha:new Date(), fechaproximaatencion:new Date(), medicamento:"", motivo:""
 , peso:"", presionalterial:"", pulso:"",saturacion:"", temperatura:"", tratamiento:"",
-hemo:""  })
+hemo:"", frecuenciarespiratoria:""  })
 
 const [paciente,setpaciente] =  useState<Paciente>({
   _id:"", alergia:"", email:"", fechanacimiento:new Date(),
@@ -174,13 +175,14 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
   const onFinishConsulta =async (values: {peso:string, estatura:string, temperatura:string, 
     presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
   anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
-  saturacion:string,
+  saturacion:string, frecuenciarespiratoria:string,
   fechaproximaatencion:Moment})=>
   {
     const citax = {
       _id: citaprevia.cita?citaprevia.cita!._id:"",
       peso: values.peso,
       estatura: values.estatura,
+      frecuenciarespiratoria: values.frecuenciarespiratoria,
       temperatura: values.temperatura,
       presionalterial: values.presionalterial,
       imc: values.imc,
@@ -215,7 +217,16 @@ const [citaprevia, setCitaprevia]= useState<Citasprevias>({
     message.success("Se almacenó correctamente la consulta");
     setcitav2(false);
 
-
+    setCitasprevias(citasprevias.map(ele=>{
+      if (ele._id=== FormaCita.getFieldValue("id") )
+        return {
+          ...ele,
+          cita: respuestaConAdjunto
+         };
+      else
+        return ele;
+    }) );
+    console.log(citasprevias)
   }
   const cambiaDesde=(valor:Moment|null)=>{
     if (valor)

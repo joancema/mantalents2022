@@ -66,7 +66,7 @@ export const PacientesPage= ( )=>{
       setcitaactual({
         _id:"", anamnesis:"", diagnostico:"", estatura:"", fechaproximaatencion:new Date(),
         imc:"", medicamento:"", peso:'', presionalterial:'',pulso:'',temperatura:'', tratamiento:"",
-        fecha:new Date(), hemo:"", img:undefined, motivo:"", saturacion:""
+        fecha:new Date(), hemo:"", img:undefined, motivo:"", saturacion:"", frecuenciarespiratoria:""
       });
       FormaCita.setFieldsValue({
         estatura:"",
@@ -75,6 +75,7 @@ export const PacientesPage= ( )=>{
         presionalterial: "",
         imc: "",
         pulso: "",
+        frecuenciarespiratoria:"",
         hemo: "",
         fecha: moment(new Date() , "YYYY-MM-DD"),
         anamnesis: "",
@@ -95,7 +96,7 @@ export const PacientesPage= ( )=>{
       const [paciente, setpaciente] = useState<Paciente>({_id:'', nombre:'', rut:'',direccion:'', telefono:''
       , citas:[], fechanacimiento: new Date(), alergia:'', sexo:'', email:'', nacionalidad:'', previsionsalud:'', otrosdatos:'', estadocivil:''  });
       const [citaactual, setcitaactual]= useState<Cita>({
-        _id:"", anamnesis:"", diagnostico:"", estatura:"", fechaproximaatencion:new Date(),
+        _id:"", anamnesis:"", diagnostico:"", estatura:"", frecuenciarespiratoria:"", fechaproximaatencion:new Date(),
         imc:"", medicamento:"", peso:'', presionalterial:'',pulso:'',temperatura:'', tratamiento:"",
         fecha:new Date(), hemo:"", motivo:"", saturacion:""
       });
@@ -107,7 +108,7 @@ export const PacientesPage= ( )=>{
     const onFinishCita = async (values: {peso:string, estatura:string, temperatura:string, 
       presionalterial:string, imc:string, pulso:string, hemo:string, fecha:Moment, 
     anamnesis:string, diagnostico:string , tratamiento:string, medicamento:string, motivo:string,
-    saturacion:string,
+    saturacion:string, frecuenciarespiratoria:string,
     fechaproximaatencion:Moment}) => {
       const citax = {
         _id: idcita,
@@ -115,6 +116,7 @@ export const PacientesPage= ( )=>{
         estatura: values.estatura,
         temperatura: values.temperatura,
         presionalterial: values.presionalterial,
+        frecuenciarespiratoria: values.frecuenciarespiratoria,
         imc: values.imc,
         pulso: values.pulso,
         hemo: values.hemo,
@@ -150,7 +152,8 @@ export const PacientesPage= ( )=>{
             setCitas(citas.map(ele=>{ if (ele._id=== idcita) 
               return {...ele, anamnesis: citax.anamnesis, fecha: citax.fecha 
                 , medicamento: values.medicamento, peso: values.peso,
-                presionalterial: values.presionalterial, estatura: values.estatura
+                presionalterial: values.presionalterial, estatura: values.estatura,
+                frecuenciarespiratoria: values.frecuenciarespiratoria
                 , temperatura: values.temperatura, imc: values.imc, pulso: values.pulso
                 ,hemo: values.hemo,  fechaproximaatencion: new Date(values.fechaproximaatencion.toISOString().substr(0,10) ) 
               , img: respuestaConAdjunto.img  }; else return ele; }));
@@ -226,15 +229,15 @@ export const PacientesPage= ( )=>{
         render: (valor: any) =>  (typeof(valor)==="string")?valor.substr(0,16).replace("T"," ") : moment(valor).format("YYYY-MM-DD hh:mm")  ,
       },
       {
-        title: 'Usuario doctor',
+        title: 'Usuario',
         dataIndex: ['usuario','nombre'],
         key: 'usuario',
         width: '10%',
       },
       {
-        title: 'Anamnesis',
-        dataIndex: 'anamnesis',
-        key: 'anamnesis',
+        title: 'Motivo de Consulta',
+        dataIndex: 'motivo',
+        key: 'motivo',
         width: '50%',
       },
       {
@@ -265,6 +268,7 @@ export const PacientesPage= ( )=>{
               tratamiento: record.tratamiento,
               medicamento: record.medicamento,
               saturacion: record.saturacion,
+              frecuenciarespiratoria: record.frecuenciarespiratoria,
               motivo: record.motivo,
               fechaproximaatencion: moment(new Date(record.fechaproximaatencion), "YYYY-MM-DD hh:mm:ss a"),
             });
@@ -435,7 +439,7 @@ export const PacientesPage= ( )=>{
                   label="Nombre Completo"
                   name="nombre"
                   rules={[{ required: true, message: 'Por favor ingrese el Nombre' }]}>
-                  <Input style={{ width:"70%", textTransform: 'uppercase' }} placeholder="ESCRIBIR APELLIDOS LUEGO NOMBRES" />
+                  <Input style={{ width:"70%", textTransform: 'uppercase' }} placeholder="ESCRIBIR NOMBRES LUEGO APELLIDOS" />
                 </Form.Item>
                 <Form.Item label="Fecha de Nacimiento"
                  name="fechanacimiento"
@@ -446,7 +450,7 @@ export const PacientesPage= ( )=>{
                   <InputNumber />
                 </Form.Item>
                 <Form.Item
-                  label="Sexo"
+                  label="Género"
                   name="sexo"
                   rules={[{ required: true, message: 'Por favor ingrese el sexo del paciente' }]}>
                   <Input style={{width:"20%", textTransform: 'capitalize'}} />
@@ -457,7 +461,7 @@ export const PacientesPage= ( )=>{
                   <Input style={{width:"20%", textTransform:"capitalize"}} />
                 </Form.Item>
                 <Form.Item
-                  label="Provisión de Salud"
+                  label="Previsión de Salud"
                   name="previsionsalud">
                   <TextArea style={{width:"80%", textTransform: 'uppercase'}} />
                 </Form.Item>
@@ -478,7 +482,7 @@ export const PacientesPage= ( )=>{
                   <TextArea style={{width:"80%"}} />
                 </Form.Item>
                 <Form.Item
-                  label="Teléfono"
+                  label="Teléfonos"
                   name="telefono"
                   rules={[{ required: true, message: 'Por favor ingrese teléfono' }]}>
                   <TextArea style={{width:"50%"}} />
@@ -489,7 +493,7 @@ export const PacientesPage= ( )=>{
                   <Input style={{width:"50%", textTransform:'capitalize'}}  />
                 </Form.Item>
                 <Form.Item
-                  label="Alergia"
+                  label="Alergias"
                   name="alergia">
                   <TextArea style={{width:"80%", textTransform: 'uppercase', color:"red"  }} />
                 </Form.Item>

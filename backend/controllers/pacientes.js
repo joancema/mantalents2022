@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const { Paciente } = require('../models');
+const { Paciente, Usuario } = require('../models');
 const { response } = require('express');
 const {  generarReporte } = require('../helpers/reportes');
 const path = require('path');
@@ -27,11 +27,22 @@ const obtenerPacientes = async(req, res = response ) => {
 }
 const obtenerPacienteCita = async(req,res= response) =>{
     const {id} = req.params;
-    let resultado = await Paciente.find().populate({path:"citas"}) ;
+    let resultado = await Paciente.find().populate({path:"citas"}).populate('usuario', 'nombre') ;
     let filtrado = resultado.filter(p=>{return p.citas.filter(c=> {return c._id==id} ).length>0   })[0]
-    
     let citax= filtrado.citas.filter(c=>{return c._id==id})
+    
+    let listaUsuarios = await Usuario.find();
+    let parametroUsuario= citax[0].usuario;
+    let filtroUsuario= listaUsuarios.filter(p=>{ return String(p._id) == String(parametroUsuario) })
+    
+
+
     filtrado.citas= citax;
+    filtrado.estadocivil=filtroUsuario[0].nombre;
+    filtrado.email=filtroUsuario[0].correo;
+
+    //console.log(filtrado);
+    //console.log(filtroUsuario[0])
     let out = await generarReporte(filtrado);
 
     const enlace= path.join(__dirname,'../',"/uploads",'/consultas/',`${id}.pdf`);

@@ -40,7 +40,12 @@ export const HomePage= ()=>{
   
     return (
         <>
-        <Bar options={options} data={data} />
+        {
+          /**
+           <Bar options={options} data={data} />
+           * 
+           */
+        }
         
         </>
     )

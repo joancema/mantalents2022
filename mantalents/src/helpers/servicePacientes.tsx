@@ -78,6 +78,7 @@ export const postFileCita = async (idx:string, archivo:File): Promise<Cita>=>{
     return resp.data;
 }
 export const postcita = async (cita: Cita, idpacientex:string=""): Promise<Cita> =>{
+    console.log(cita)
     const token = localStorage.getItem('token') || '';
     let resp;
     if (cita._id.length>0)
