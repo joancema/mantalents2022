@@ -30,6 +30,7 @@ import { HomePage } from '../pages/homePage';
 import { CalendarioPage } from '../pages/calendarioPage';
 
 
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -130,6 +131,8 @@ export const AppRouter=()=>{
                     <Route exact path="/app/movimientos" component={MovimientosPage }/>
                     <Route exact path="/app/pacientes" component={PacientesPage }/>
                     <Route exact path="/app/calendario" component={CalendarioPage }/>
+                    
+
                     <Redirect to ="/app/movimientos"/>
                 </Switch>
             </Content>

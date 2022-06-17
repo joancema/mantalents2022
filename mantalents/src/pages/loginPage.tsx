@@ -1,7 +1,8 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-
+import logo from '../img/MANTALENTS.png';
+import { Link } from 'react-router-dom';
 
 export const LoginPage = ()=>{
   const { login } = useContext( AuthContext );
@@ -13,7 +14,24 @@ export const LoginPage = ()=>{
       const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
       };
+
+      
     return (
+      <>
+      <header className="header contenedor">
+      <div className="header__logo">
+      <Link to="/auth/inicio">
+          <img src={logo} alt="logo delivery app"/>
+          </Link>  
+      </div>
+
+      
+      </header>
+
+
+
+
+
         <Form
       name="basic"
       
@@ -50,6 +68,7 @@ export const LoginPage = ()=>{
         </Button>
       </Form.Item>
     </Form>
+    </>
     )
 
 }
