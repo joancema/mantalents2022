@@ -131,27 +131,29 @@
     <table class="table" >
         <thead>
             <tr>
+                <th>PA</th>
+                <th>FC</th>
+                <th>FR</th>
+                <th>SpO2</th>
+                <th>T°</th>
                 <th>Peso</th>
                 <th>Estatura</th>
-                <th>T</th>
-                <th>P/A</th>
                 <th>IMC</th>
-                <th>FC</th>
                 <th>HGT</th>
-                <th>SpO2</th>
             </tr>
         </thead>
         <tbody>
             {{#each citas}}
             <tr>
+                <td>{{presionalterial}}</td>
+                <td>{{pulso}}</td>
+                <td>{{frecuenciarespiratoria}}</td>
+                <td>{{saturacion}}</td>
+                <td>{{temperatura}}</td>
                 <td>{{peso}}</td>
                 <td>{{estatura}}</td>
-                <td>{{temperatura}}</td>
-                <td>{{presionalterial}}</td>
                 <td>{{imc}}</td>
-                <td>{{pulso}}</td>
                 <td>{{hemo}}</td>
-                <td>{{saturacion}}</td>
             </tr>
             {{/each}}
         </tbody>
@@ -161,7 +163,7 @@
         <div class="col-8" style="font-weight: bold;">
             Ananmesis:
         </div>
-        <span class="col-8" style="white-space: pre-line">{{anamnesis}}</span>
+        <span class="col-12" style="white-space: pre-line">{{anamnesis}}</span>
     </div>
     <div class="row">
         <div class="col-8" style="font-weight: bold;">

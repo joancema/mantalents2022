@@ -46,6 +46,7 @@ const obtenerPacienteCita = async(req,res= response) =>{
     let out = await generarReporte(filtrado);
 
     const enlace= path.join(__dirname,'../',"/uploads",'/consultas/',`${id}.pdf`);
+    // console.log(enlace)
     await  out.stream.pipe(fs.createWriteStream(enlace) );
 
     

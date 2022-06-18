@@ -18,6 +18,12 @@ export const ConsultaComponente= (
   {  paciente, citaactual, cita, setcita, FormaCita, onFinishCita, cambiarAdjuntoBefore }
   : PersonaProps)=>{
 
+    const calcular = (evento:any)=>{
+      const peso =Number(FormaCita.getFieldValue("peso"))
+      const estatura =Number(FormaCita.getFieldValue("estatura"))/100;
+      FormaCita.setFieldsValue({imc:peso/(estatura*estatura)});
+
+    }
 
 
 return (
@@ -81,12 +87,12 @@ return (
                   <Form.Item
                     label="Peso"
                     name="peso">
-                    <Input />
+                    <Input onChange={calcular} />
                   </Form.Item>
                   <Form.Item
                     label="Estatura"
                     name="estatura">
-                    <Input />
+                    <Input onChange={calcular} />
                   </Form.Item>
                   <Form.Item
                     label="IMC"
