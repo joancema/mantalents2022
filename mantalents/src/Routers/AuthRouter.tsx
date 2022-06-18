@@ -1,6 +1,9 @@
 import {  Switch, Redirect } from 'react-router-dom'
 import { LoginPage } from '../pages/loginPage';
 import { AppRouter } from './AppRouter';
+
+import { inicio } from '../pages/inicio';
+
 import {
     BrowserRouter as Router,
   } from 'react-router-dom';
@@ -25,7 +28,10 @@ export const AuthRouter=()=>{
                 <PrivateRoute isAuthenticated={auth.logged }  path="/app" component={AppRouter }/ >
                 <PublicRoute isAuthenticated={auth.logged} exact path="/auth/login" component={LoginPage }/>
                 <PublicRoute isAuthenticated={auth.logged} exact path="/auth/register" component={RegisterPage }/>
-                <Redirect to ="/auth/login"/>
+               
+                <PublicRoute isAuthenticated={auth.logged} exact path="/auth/inicio" component={inicio }/>
+               
+                <Redirect to ="/auth/inicio"/>
             </Switch>
         </Router>
     )
