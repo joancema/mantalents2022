@@ -31,7 +31,8 @@ export const AuthRouter=()=>{
                
                 <PublicRoute isAuthenticated={auth.logged} exact path="/auth/inicio" component={inicio }/>
                
-                <Redirect to ="/auth/inicio"/>
+                {/* <Redirect to ="/auth/inicio"/> */}
+                * <Redirect to ="/auth/login"/> 
             </Switch>
         </Router>
     )
